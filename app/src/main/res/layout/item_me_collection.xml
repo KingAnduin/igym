@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv_me_collection"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="8dp"
+    app:cardBackgroundColor="@color/background_white_FA"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_me_collection_is_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_home_list_is_start"
+                android:textColor="#00CCCC"
+                android:textSize="@dimen/fontSizeSmall" />
+
+            <TextView
+                android:id="@+id/tv_me_collection_deadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/item_home_list_deadline"
+                android:textColor="@color/font_black_secondary"
+                android:textSize="@dimen/fontSizeSmall" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_me_collection_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="牵手蓝天 你我同行 环保主题摄影比赛征稿"
+            android:textColor="@color/font_black_primary"
+            android:textSize="@dimen/fontSizeLarge" />
+
+
+        <TextView
+            android:id="@+id/tv_me_collection_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/item_home_list_level"
+            android:textSize="@dimen/fontSizeExtraSmall"/>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

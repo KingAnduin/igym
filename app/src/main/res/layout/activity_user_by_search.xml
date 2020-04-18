@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include layout="@layout/toolbar_tab"/>
+
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/toolbar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="10dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <com.example.thinkpad.icompetition.view.widget.AsyncImageView
+                android:id="@+id/aiv_search_user_headimage_bysearch"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_centerHorizontal="true"
+                android:src="@mipmap/ic_launcher" />
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cv_search_user_item"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_below="@id/aiv_search_user_headimage_bysearch"
+                app:cardCornerRadius="10dp"
+                android:elevation="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/user_bysearch"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="用户名：" />
+
+                        <TextView
+                            android:id="@+id/tv_user_name_bysearh"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="未编辑" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#e1e1e1" />
+
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/user_num_bysearch"
+                            tools:ignore="ContentDescription" />
+                        <TextView
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="账号：" />
+
+                        <TextView
+                            android:id="@+id/tv_user_num_bysearch"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="未编辑" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#e1e1e1" />
+
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/role_bysearch"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="权限身份：" />
+
+                        <TextView
+                            android:id="@+id/tv_user_role_bysearch"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="未编辑" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#e1e1e1" />
+                    <LinearLayout
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@mipmap/ic_sex"
+                            tools:ignore="ContentDescription" />
+
+                        <TextView
+                            android:layout_marginStart="5dp"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="性别：" />
+
+                        <TextView
+                            android:id="@+id/tv_user_sex_bysearch"
+                            android:layout_gravity="bottom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:text="未编辑" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_marginTop="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="0.5dp"
+                        android:background="#e1e1e1" />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+            <RelativeLayout
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginBottom="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <Button
+                    android:id="@+id/btn_user_concern"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=" "
+                    android:textColor="#fff"
+                    android:textSize="@dimen/fontSizeMedium"
+                    android:background="@drawable/background_loginbt"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"/>
+                <ProgressBar
+                    android:id="@+id/progressbar_loading"
+                    android:indeterminateTint="#fff"
+                    android:layout_marginBottom="8dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_alignParentBottom="true"
+                    android:elevation="10dp"
+                    />
+            </RelativeLayout>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

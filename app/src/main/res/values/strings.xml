@@ -1,0 +1,99 @@
+<resources>
+    <string name="app_name">i竞赛</string>
+
+    <!--主页标题-->
+    <string name="competition">竞赛汇聚地</string>
+    <string name="me">我的地盘</string>
+
+    <!-- 通用 -->
+    <string name="system_time_error">系统时间错误,请检查设备时间</string>
+    <string name="request_fail">请求失败</string>
+    <string name="not_network">未能连接到服务器</string>
+    <string name="not_have_network">请检查网络状况</string>
+    <!-- 登陆 -->
+    <string name="login_user_null">请输入帐号</string>
+    <string name="login_password_null">请输入密码</string>
+    <string name="login_usernum_is_phone">请输入合法的账户(提示:该账户为大陆手机号码！)</string>
+
+    <!--注册-->
+    <string name="register_userid">请输入注册手机号</string>
+    <string name="register_password">请输入6—10位数字或字母密码</string>
+    <string name="register_userid_notnull">手机号不能为空</string>
+    <string name="register_password_notnull">密码不能为空</string>
+    <string name="register_surepassword">请再次输入密码确定</string>
+    <string name="register_nomatch_password">两次密码不一致</string>
+    <string name="register_haveuser">已有账户？</string>
+    <string name="register_gotologin">直接登录</string>
+    <string name="register_userid_error">请输入正确的大陆手机号码</string>
+    <string name="register_password_error">请输入符合规范的密码</string>
+    <string name="register_repeat">该账户已被注册，换一个再试试？</string>
+    <string name="register_success">恭喜你~你已注册成功！</string>
+
+    <!--角色权限名称-->
+    <string name="role_ordinary_user">普通用户</string>
+    <string name="role_release_user">发布者</string>
+    <string name="role_manage_user">管理员</string>
+
+    <!--修改用户信息-->
+    <string name="submit_success">个人信息保存成功</string>
+
+    <!--修改密码-->
+    <string name="user_num">当前账户</string>
+    <string name="sure_password">确认密码</string>
+    <string name="old_password">旧密码</string>
+    <string name="new_password">新密码</string>
+    <string name="password_change">修改密码</string>
+    <string name="input_old_password">请输入原来的密码</string>
+    <string name="new_password_limit">由6到16位大小写字母或数字组成</string>
+    <string name="second_input_new_password">请再次输入新密码</string>
+    <string name="not_input_old_password">请输入旧密码</string>
+    <string name="not_input_new_password">请输入新密码</string>
+    <string name="not_input_sure_password">请再次确认密码</string>
+    <string name="new_password_notmatch">两次输入的密码不一致！</string>
+    <string name="new_password_error">新密码不符合规范请重新填写！</string>
+    <string name="old_password_notmatch">旧密码错误,请重新输入！</string>
+    <string name="change_password_success">密码修改成功！</string>
+
+  <!-- 首页竞赛信息item -->
+    <string name="item_home_list_is_start">正在报名</string>
+    <string name="item_home_list_started">报名截止</string>
+    <string name="item_home_list_deadline">距离报名截止时间还有&#160;%1$s&#160;天&#160;</string>
+    <string name="item_home_list_is_end">报名时间已截止</string>
+    <string name="item_home_list_time_sign_up">报名时间&#160;&#160;&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="item_home_list_time_exam">考试时间&#160;&#160;&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="item_home_list_organizer">主办方&#160;&#160;&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="item_home_list_type">类型&#160;&#160;&#160;&#160;&#160;&#160;%1$s</string>
+    <string name="item_home_list_level">国家级比赛  全国参与</string>
+
+    <!-- 竞赛详细信息 -->
+    <string name="competition_info_title">竞赛详情</string>
+    <string name="competition_info_publish">竞赛发布者</string>
+    <string name="competition_info_publish_name">发布者姓名</string>
+    <string name="competition_info_url">官方网址</string>
+    <string name="competition_info_time_sign_up">报名时间</string>
+    <string name="competition_info_time_exam">考试时间</string>
+    <string name="competition_info_organizer">主办方</string>
+    <string name="competition_info_webView">前往官网报名</string>
+
+
+    <!-- ItemFoot -->
+    <string name="attention_fresh_hint">正在加载....</string>
+    <string name="attention_bottom_hint">我是有底线的</string>
+    <string name="attention_fail_hint">错误原因:</string>
+
+    <!--搜索-->
+    <string name="search_keywords">请输入关键字</string>
+    <string name="search">搜索</string>
+    <string name="other_user">他的资料</string>
+
+    <!--关注-->
+    <string name="concern_is_concern">已关注</string>
+    <string name="concern_not_concern">未关注</string>
+    <string name="add_concern_success">关注成功！</string>
+    <string name="delete_concern_success">取消关注成功！</string>
+    <string name="action_fail">操作失败</string>
+    <string name="my_focus_title">我的关注</string>
+
+    <!--收藏-->
+    <string name="collection">我的收藏</string>
+</resources>

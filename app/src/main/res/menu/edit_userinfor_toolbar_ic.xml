@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".view.activity.impl.EditUserInforActivity">
+    <group
+        android:id="@+id/group_submit">
+        <item
+            android:id="@+id/action_submit"
+            android:orderInCategory="80"
+            android:title="保存"
+            app:showAsAction="ifRoom"/>
+    </group>
+</menu>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="main_bottom_tab_textcolor_normal">#999999</color>
+    <color name="main_bottom_tab_textcolor_selected">#D97D54</color>
+    <color name="icompetition_color">#D97D54</color>
+    <color name="white">#fff</color>
+    <color name="toolbar">#D97D54</color>
+    <color name="boomHighLight">#80FFFFFF</color>
+    <color name="app_theme">#D97D54</color>
+    <color name="interest_selected">#2682ab</color>
+
+
+    <color name="background_white_FA">#FFFAFAFA</color>     <!--用于底层以上的背景-->
+    <color name="background_white_EF">#FFEFEFEF</color>     <!--用于最底层的背景-->
+    <color name="background_white_FF">#FFFFFFFF</color>     <!--用于卡片&对话框-->
+    <color name="font_black_primary">#DE000000</color>      <!--用于亮背景上的主要黑色文本-->
+    <color name="font_black_secondary">#8A000000</color>    <!--用于亮背景上的次要黑色文本-->
+    <!-- 底部导航栏图标大小 -->
+    <dimen name="tab_image_weith">24dp</dimen>
+    <dimen name="tab_image_heigh">24dp</dimen>
+</resources>

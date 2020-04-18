@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cv_item_home_list"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="16dp"
+    android:layout_marginTop="16dp"
+    android:layout_marginEnd="16dp"
+    app:cardBackgroundColor="@color/background_white_FA"
+    app:cardCornerRadius="2dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/iv_item_home_list_photo"
+            android:layout_width="match_parent"
+            android:layout_height="96dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/infor"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_item_home_list_is_start"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/item_home_list_is_start"
+                android:textColor="#00CCCC"
+                android:textSize="@dimen/fontSizeSmall" />
+
+            <TextView
+                android:id="@+id/tv_item_home_list_deadline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/item_home_list_deadline"
+                android:textColor="@color/font_black_secondary"
+                android:textSize="@dimen/fontSizeSmall" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_item_home_list_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="@color/font_black_primary"
+            android:textSize="@dimen/fontSizeLarge" />
+
+
+        <TextView
+            android:id="@+id/tv_item_home_list_start_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/item_home_list_time_sign_up"
+            android:textColor="@color/font_black_primary"
+            android:textSize="@dimen/fontSizeMedium" />
+
+
+        <TextView
+            android:id="@+id/tv_item_home_list_exam_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/item_home_list_time_exam"
+            android:textColor="@color/font_black_primary"
+            android:textSize="@dimen/fontSizeMedium" />
+
+
+
+        <TextView
+            android:id="@+id/tv_item_home_list_level"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/item_home_list_level"
+            android:textSize="@dimen/fontSizeExtraSmall"/>
+
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

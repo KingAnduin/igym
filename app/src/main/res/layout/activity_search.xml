@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#D97D54 "
+        android:minHeight="?attr/actionBarSize"
+        android:fitsSystemWindows="true"
+        app:title=" "
+        app:titleMarginStart="0dp"
+        app:titleMarginTop="2dp"
+        app:titleTextColor="#fff"
+        app:theme="@style/ToolbarTheme">
+
+        <ImageView
+            android:id="@+id/iv_search_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:src="@mipmap/back" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_gravity="center_vertical"
+                android:layout_width="0dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="8"
+                android:background="@drawable/background_ellipse">
+
+                <EditText
+                    android:id="@+id/et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@null"
+                    android:gravity="center_vertical"
+                    android:hint="@string/search_keywords"
+                    android:lines="1"
+                    android:singleLine="true"
+                    android:textCursorDrawable="@null"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_search"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:textColor="#fff"
+                android:text="@string/search" />
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_search"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#D97D54"
+        app:tabSelectedTextColor="#FFF68F"
+        app:tabTextColor="#fff"
+        app:tabIndicatorColor="#FFF68F"
+        app:tabIndicatorHeight="2dp">
+    </android.support.design.widget.TabLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_search"
+        android:overScrollMode="never"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </android.support.v4.view.ViewPager>
+        <LinearLayout
+            android:id="@+id/layout_not_found"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/cat"/>
+            <TextView
+                android:layout_marginTop="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="再怎么找也没找到"/>
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>
