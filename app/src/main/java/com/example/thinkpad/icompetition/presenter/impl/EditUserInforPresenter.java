@@ -25,8 +25,8 @@ public class EditUserInforPresenter extends BasePresenter<EditUserInforActivity,
     }
 
     @Override
-    public void submitUserInfor(UserInforBean bean,boolean haveHeadImage) {
-        mModel.submitUserInfor(bean,haveHeadImage);
+    public void submitUserInfor(UserInforBean bean,String user_account) {
+        mModel.submitUserInfor(bean,user_account);
     }
 
     @Override
@@ -46,8 +46,8 @@ public class EditUserInforPresenter extends BasePresenter<EditUserInforActivity,
             case LoginEvent.GETUERINFOR_OK:
                 UserInforRoot root = ((LoginEvent)msg.obj).getUserInforRoot();
                 mView.getUserInforReturn(root);
-                mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",root.getData().getUser_num()).apply();
-                saveUserInforToDB(root.getData());
+                mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",root.getData().get(0).getId()).apply();
+                saveUserInforToDB(root.getData().get(0));
                 break;
             case LoginEvent.GETUSERINFOR_FAIL:
                 mView.failBecauseNotNetworkReturn(msg.what);

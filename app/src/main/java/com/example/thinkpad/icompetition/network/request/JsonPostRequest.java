@@ -3,6 +3,7 @@ package com.example.thinkpad.icompetition.network.request;
 import android.support.v4.util.ArrayMap;
 import android.text.TextUtils;
 import android.util.Base64;
+import android.util.Log;
 
 import com.example.thinkpad.icompetition.IcompetitionApplication;
 import com.example.thinkpad.icompetition.view.activity.ActivityManager;
@@ -42,15 +43,64 @@ public class JsonPostRequest {
      * @return request
      */
     public Request getRequest() {
-        token=getBase64Token(((IcompetitionApplication) ActivityManager.getActivityManager().peekActivity().getApplication()).getToken());
+        //TODO token加密
+        //token=getBase64Token(((IcompetitionApplication) ActivityManager.getActivityManager().peekActivity().getApplication()).getToken());
+        token=((IcompetitionApplication) ActivityManager.getActivityManager().peekActivity().getApplication()).getToken();
+
         //将map转换为json字串
         RequestBody body = RequestBody.create(JSON, new Gson().toJson(mRequestParam));
         if(!TextUtils.isEmpty(token)) {
-            return new Request.Builder().url(mUrl).header("Authorization", "Basic "+token).post(body).tag("tag").build();
+            //TODO
+            //return new Request.Builder().url(mUrl).header("Authorization", "Basic "+token).post(body).tag("tag").build();
+            return new Request.Builder().url(mUrl).header("Authorization", token).post(body).tag("tag").build();
+
         }
         return new Request.Builder().url(mUrl).post(body).tag("tag").build();
         //return new Request.Builder().url(mUrl).addHeader("Authorization","Basic ZXlKaGJHY2lPaUpJVXpJMU5pSXNJbWxoZENJNk1UVTBNelEzTmprMk15d2laWGh3SWpveE5UUXpORGczTURRemZRLmV5SjFjMlZ5WDI1MWJTSTZNVFUyT0RFNU5UTXpNakY5LlVqT3ZwMHNMOEtlc252dXpyS2d0NzZ3eWJWUy1uSV9MdFVwQ2lnSnl2c006").post(body).tag("tag").build();
     }
+
+    public Request getRequestByMethod(String method) {
+        token=((IcompetitionApplication) ActivityManager.getActivityManager().peekActivity().getApplication()).getToken();
+
+        //将map转换为json字串
+        RequestBody body = RequestBody.create(JSON, new Gson().toJson(mRequestParam));
+        Request request;
+
+        if(!TextUtils.isEmpty(token)) {
+            switch (method){
+                case "POST":
+                    request = new Request.Builder().url(mUrl).header("Authorization", token).post(body).tag("tag").build();
+                    break;
+                case "GET":
+                    request = new Request.Builder().url(mUrl).header("Authorization", token).get().tag("tag").build();
+                    break;
+                case "PUT":
+                    request = new Request.Builder().url(mUrl).header("Authorization", token).put(body).tag("tag").build();
+                    break;
+                default:
+                    request = new Request.Builder().url(mUrl).header("Authorization", token).delete(body).tag("tag").build();
+                    break;
+            }
+            return request;
+        }
+        switch (method){
+            case "POST":
+                request = new Request.Builder().url(mUrl).post(body).tag("tag").build();
+                break;
+            case "GET":
+                request = new Request.Builder().url(mUrl).get().tag("tag").build();
+                break;
+            case "PUT":
+                request = new Request.Builder().url(mUrl).put(body).tag("tag").build();
+                break;
+            default:
+                request = new Request.Builder().url(mUrl).delete(body).tag("tag").build();
+                break;
+        }
+
+        return request;
+    }
+
 
     /**
      * 使用Base64加密token

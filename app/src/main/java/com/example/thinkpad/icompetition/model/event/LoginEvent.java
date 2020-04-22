@@ -7,10 +7,10 @@ import com.example.thinkpad.icompetition.model.entity.user.UserInforRoot;
  * Created by Hjg on 2018/11/27.
  */
 public class LoginEvent extends BaseEvent {
-    public static final int LOGIN_OK = 100;
-    public static final int LOGIN_FAIL = 0;
-    public static final int GETUERINFOR_OK = 101;
-    public static final int GETUSERINFOR_FAIL = 102;
+    public static final int LOGIN_OK = 200;
+    public static final int LOGIN_FAIL = 201;
+    public static final int GETUERINFOR_OK = 300;
+    public static final int GETUSERINFOR_FAIL = 301;
     private String message = "";
     private LoginRoot root;
     private UserInforRoot userInforRoot;

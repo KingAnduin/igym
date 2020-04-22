@@ -1,6 +1,7 @@
 package com.example.thinkpad.icompetition.model.impl;
 
 import android.os.Handler;
+import android.util.Log;
 
 import com.example.thinkpad.icompetition.model.entity.user.ChangePasswordRoot;
 import com.example.thinkpad.icompetition.model.event.ChangePasswordEvent;

@@ -170,6 +170,7 @@ public class InterstsSelectActivity extends BaseActivity<InterstsSelectActivityP
     }
 
     private void drawInterests() {
+        /*
         for (int i = 0; i< userInterestList.size(); i++){
             final Button button = new Button(this);
             button.setBackground(getDrawable(R.drawable.background_interest_circle));
@@ -201,7 +202,7 @@ public class InterstsSelectActivity extends BaseActivity<InterstsSelectActivityP
                 button.setLayoutParams(lp);
             }
             mGridLayout.addView(button);
-        }
+        }*/
     }
 
     public static int dip2px(Context context, float dpValue) {
@@ -236,7 +237,7 @@ public class InterstsSelectActivity extends BaseActivity<InterstsSelectActivityP
             UserInforBeanDao userInforBeanDao = daoSession.getUserInforBeanDao();
             List<UserInforBean> userInforBeanList = userInforBeanDao.loadAll();
             UserInforBean userInforBean = userInforBeanList.get(0);
-            userInforBean.setUser_interest(interests);
+            //userInforBean.setUser_interest(interests);
             daoSession.update(userInforBean);
             drawInterests();
         }else {

@@ -23,7 +23,7 @@ import greendao.gen.DaoSession;
 import greendao.gen.UserInforBeanDao;
 
 /**
- * created by a’su's
+ * 修改密码
  */
 public class UserSetActivity extends BaseActivity<UserSetPresenter> implements View.OnClickListener, IBaseActivity {
     private LinearLayout mChangePasswordLayout;
@@ -55,6 +55,8 @@ public class UserSetActivity extends BaseActivity<UserSetPresenter> implements V
         if(list.get(0)!=null) {
             mUserBean = list.get(0);
         }
+        // TODO 暂未处理
+        /*
         if(!TextUtils.isEmpty(String.valueOf(mUserBean.getUser_roleid()))){
             int roleID = mUserBean.getUser_roleid();
             //根据roleID填写角色权限名
@@ -70,6 +72,7 @@ public class UserSetActivity extends BaseActivity<UserSetPresenter> implements V
         }
         if(!TextUtils.isEmpty(String.valueOf(mUserBean.getUser_num())))
         mUserNumTV.setText(String.valueOf(mUserBean.getUser_num()));
+        */
     }
 
     private void setListener() {

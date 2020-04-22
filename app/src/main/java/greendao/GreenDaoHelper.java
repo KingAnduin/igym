@@ -9,7 +9,8 @@ import greendao.gen.DaoMaster;
  */
 
 public class GreenDaoHelper extends DaoMaster.OpenHelper {
-    public static final String DB_NAME = "icompetition.db";      //数据库名字
+    public static final String DB_NAME = "igym.db";      //数据库名字
+    //public static final String DB_NAME = "icompetition.db";      //数据库名字
     public Context mContext;     //上下文
 
     public GreenDaoHelper(Context context) {

@@ -75,17 +75,17 @@ public class UserInforActivity extends BaseActivity<UserInforPresenter> implemen
         if(list.get(0)!=null) {
             mUserBean = list.get(0);
         }
-        if(!TextUtils.isEmpty(mUserBean.getUser_name()))
-            mUserNameTV.setText(mUserBean.getUser_name());
-        if(!TextUtils.isEmpty(mUserBean.getUser_sex()))
-            mUserSexTV.setText(mUserBean.getUser_sex());
-        if(!TextUtils.isEmpty(mUserBean.getUser_birthday()))
-            mUserBirthday.setText(mUserBean.getUser_birthday());
-        if(!TextUtils.isEmpty(mUserBean.getUser_headimage())){
+        if(!TextUtils.isEmpty(mUserBean.getNickname()))
+            mUserNameTV.setText(mUserBean.getNickname());
+        if(!TextUtils.isEmpty(mUserBean.getSex()))
+            mUserSexTV.setText(mUserBean.getSex());
+        if(!TextUtils.isEmpty(mUserBean.getBirthday()))
+            mUserBirthday.setText(mUserBean.getBirthday());
+        if(!TextUtils.isEmpty(mUserBean.getHead_image())){
             imageLoader.init(ImageLoaderConfiguration.createDefault(this));
             imageLoader.clearDiskCache();
             imageLoader.clearMemoryCache();
-            imageLoader.displayImage(mUserBean.getUser_headimage(),mUserHeadImageAIV,options);
+            imageLoader.displayImage(mUserBean.getHead_image(),mUserHeadImageAIV,options);
         }
     }
 

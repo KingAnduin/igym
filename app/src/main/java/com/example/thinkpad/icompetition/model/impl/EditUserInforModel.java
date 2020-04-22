@@ -28,11 +28,11 @@ public class EditUserInforModel extends BaseModel implements IBaseModel,IEditUse
     }
 
     @Override
-    public void submitUserInfor(UserInforBean bean,boolean haveHeadImage) {
+    public void submitUserInfor(UserInforBean bean,String user_account) {
         Callback callback = new CallbackIntercept() {
             @Override
             public void onSuccess(Call call, String jsonBody) {
-                System.out.println(jsonBody);
+                //System.out.println(jsonBody);
                 Gson gson = new Gson();
                 EditUserInforRoot root = gson.fromJson(jsonBody,EditUserInforRoot.class);
                 if(root!=null) {
@@ -40,6 +40,12 @@ public class EditUserInforModel extends BaseModel implements IBaseModel,IEditUse
                         EditUserInforEvent event = new EditUserInforEvent();
                         event.setRoot(root);
                         event.setWhat(EditUserInforEvent.EDITUSERINFOR_OK);
+                        postEvent(event);
+                    }
+                    else {
+                        EditUserInforEvent event = new EditUserInforEvent();
+                        event.setRoot(root);
+                        event.setWhat(EditUserInforEvent.EDITUSERINFOR_FAIL);
                         postEvent(event);
                     }
                 }
@@ -58,12 +64,8 @@ public class EditUserInforModel extends BaseModel implements IBaseModel,IEditUse
                 postEvent(event);
             }
         };
-        if(haveHeadImage){
-            mNetworkInterface.submitUserInfor(callback,bean.getUser_name(),bean.getUser_sex(),bean.getUser_birthday(),bean.getUser_headimage());
-        }
-        else {
-            mNetworkInterface.submitUserInforWithoutHeadImage(callback, bean.getUser_name(), bean.getUser_sex(), bean.getUser_birthday());
-        }
+        //TODO
+        mNetworkInterface.submitUserInfor(callback,user_account, bean.getNickname(),bean.getSex(),bean.getBirthday(),bean.getHead_image());
     }
     @Override
     public void getUserInfor(String num) {

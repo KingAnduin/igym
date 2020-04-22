@@ -48,9 +48,15 @@ public class NetworkInterfaces {
      */
     public void userRegister(Callback callback, String name, String pwd){
         ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("user_num", name);
-        param.put("user_pwd", pwd);
-        new NetworkRequest(param, SERVER_HOST + REGISTER, callback).sendRequest();
+        //param.put("user_num", name);
+        //param.put("user_pwd", pwd);
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String REGISTER = "/api/user/register/";
+        param.put("phone", name);
+        param.put("password", pwd);
+        param.put("nickname", "hhh");
+        new NetworkRequest(param, SERVER_HOST + REGISTER, callback).sendRequestByMethod("POST");
 
     }
 
@@ -63,22 +69,30 @@ public class NetworkInterfaces {
      */
     public void userLogIn(Callback callback, String user_num, String user_pwd){
         ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("user_num", user_num);
-        param.put("user_pwd", user_pwd);
-        new NetworkRequest(param, SERVER_HOST + LOG_IN, callback).sendRequest();
+        //param.put("user_num", user_num);
+        //param.put("user_pwd", user_pwd);
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String LOG_IN = "/api/user/login/";
+        param.put("phone", user_num);
+        param.put("password", user_pwd);
+        new NetworkRequest(param, SERVER_HOST + LOG_IN, callback).sendRequestByMethod("POST");
     }
 
     /**
      * 用户密码修改
      * @param callback .
-     * @param oldPassword 旧密码
      * @param newPassword 新密码
      */
     public void changePassword(Callback callback,String oldPassword,String newPassword ){
         ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("user_pwd", oldPassword);
-        param.put("new_pwd",newPassword);
-        new NetworkRequest(param,SERVER_HOST + CHANGE_PASSWORD,callback).sendRequest();
+        //param.put("user_pwd", oldPassword);
+        //param.put("new_pwd",newPassword);
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String CHANGE_PASSWORD = "/api/user/changePassword/";
+        param.put("password",newPassword);
+        new NetworkRequest(param,SERVER_HOST + CHANGE_PASSWORD,callback).sendRequestByMethod("POST");
     }
 
     /**
@@ -88,9 +102,40 @@ public class NetworkInterfaces {
      */
     public void userInfor(Callback callback, String num) {
         ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("user_num", num);
-        new NetworkRequest(param, SERVER_HOST + USER_INFOR, callback).sendRequest();
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String USER_INFOR = "/api/user/userInfo/";
+        //param.put("user_num", num);
+        new NetworkRequest(param, SERVER_HOST + USER_INFOR, callback).sendRequestByMethod("GET");
     }
+
+    /**
+     * 带头像提交个人用户信息
+     * @param callback .
+     * @param user_account 用户id
+     * @param userName 用户姓名
+     * @param userSex 用户性别
+     * @param userBirthday 用户生日
+     * @param headImage 用户头像
+     */
+    public void submitUserInfor(Callback callback,String user_account,String userName,String userSex,String userBirthday,String headImage){
+        ArrayMap<String,String> param = new ArrayMap<>();
+        //param.put("user_name",userName);
+        //param.put("user_sex",userSex);
+        //param.put("user_birthday",userBirthday);
+        //param.put("user_headimage",headImage);
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String USER_INFOR = "/api/user/userInfo/";
+        param.put("user_account",user_account);
+        param.put("nickname",userName);
+        param.put("name",userName);
+        param.put("sex",userSex);
+        param.put("birthday",userBirthday);
+        param.put("head_image",headImage);
+        new NetworkRequest(param,SERVER_HOST + USER_INFOR,callback).sendRequestByMethod("PUT");
+    }
+
 
     /**
      * 分页查询竞赛信息
@@ -119,38 +164,6 @@ public class NetworkInterfaces {
 
     }
 
-    /**
-     * 带头像提交个人用户信息
-     * @param callback .
-     * @param userName 用户姓名
-     * @param userSex 用户性别
-     * @param userBirthday 用户生日
-     * @param headImage 用户头像
-     */
-    public void submitUserInfor(Callback callback,String userName,String userSex,String userBirthday,String headImage){
-        ArrayMap<String,String> param = new ArrayMap<>();
-        param.put("user_name",userName);
-        param.put("user_sex",userSex);
-        param.put("user_birthday",userBirthday);
-        param.put("user_headimage",headImage);
-        new NetworkRequest(param,SERVER_HOST + SUBMIT_USERINFOR,callback).sendRequest();
-    }
-
-    /**
-     * 应后台要求添加
-     * 不带头像提交个人用户信息
-     * @param callback .
-     * @param userName 用户姓名
-     * @param userSex 用户性别
-     * @param userBirthday 用户生日
-     */
-    public void submitUserInforWithoutHeadImage(Callback callback,String userName,String userSex,String userBirthday){
-        ArrayMap<String,String> param = new ArrayMap<>();
-        param.put("user_name",userName);
-        param.put("user_sex",userSex);
-        param.put("user_birthday",userBirthday);
-        new NetworkRequest(param,SERVER_HOST + SUBMIT_USERINFOR,callback).sendRequest();
-    }
 
     /**
      *

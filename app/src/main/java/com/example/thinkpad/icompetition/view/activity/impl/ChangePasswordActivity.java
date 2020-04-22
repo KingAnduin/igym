@@ -159,6 +159,7 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordPresenter
             editor.putString("user_login_pwd",mNewPasswordET.getText().toString());
             editor.apply();
             showSnackBar(mOldPasswordET,getString(R.string.change_password_success),getMainColor());
+            finish();
         }
     }
 

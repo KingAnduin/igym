@@ -1,7 +1,5 @@
 package com.example.thinkpad.icompetition.model.entity.user;
 
-import java.util.List;
-
 /**
  * Created by Hjg on 2018/11/27.
  * 登陆的返回结果
@@ -9,7 +7,7 @@ import java.util.List;
 public class LoginRoot {
     private int code;
     private String msg;
-    private List<LoginBean> data;
+    private LoginBean data;
 
     public int getCode() {
         return code;
@@ -27,11 +25,11 @@ public class LoginRoot {
         this.msg = msg;
     }
 
-    public List<LoginBean> getData() {
+    public LoginBean getData() {
         return data;
     }
 
-    public void setData(List<LoginBean> data) {
+    public void setData(LoginBean data) {
         this.data = data;
     }
 }

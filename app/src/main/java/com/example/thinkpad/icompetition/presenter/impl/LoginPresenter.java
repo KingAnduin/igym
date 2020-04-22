@@ -47,8 +47,9 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel> imp
                 break;
             case LoginEvent.GETUERINFOR_OK:
                 UserInforRoot inforRoot = ((LoginEvent)msg.obj).getUserInforRoot();
-                mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",inforRoot.getData().getUser_num()).apply();
-                saveUserInforToDB(inforRoot.getData());
+                // TODO ?
+                mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",inforRoot.getData().get(0).getId()).apply();
+                saveUserInforToDB(inforRoot.getData().get(0));
                 mView.getUserInforReturn(inforRoot);
                 break;
             case LoginEvent.GETUSERINFOR_FAIL:

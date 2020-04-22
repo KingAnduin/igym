@@ -119,7 +119,7 @@ public class MyFocusActivity
                         mRecyclerViewCurrentY = dy;
                         mRecyclerViewCurrentX = dx;
                         //加载更多
-                        getFocusInfo( ++mCurrentPage, page_size, String.valueOf(mUserBean.getUser_num()));
+                        getFocusInfo( ++mCurrentPage, page_size, String.valueOf(mUserBean.getContact_phone()));
                     }
                 }
             }
@@ -222,7 +222,7 @@ public class MyFocusActivity
                 mSwipeRefreshLayout.setRefreshing(true);
             }
         });
-        getFocusInfo( mCurrentPage, page_size, String.valueOf(mUserBean.getUser_num()));
+        getFocusInfo( mCurrentPage, page_size, String.valueOf(mUserBean.getContact_phone()));
     }
 
     /**

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,15 +85,17 @@ public class MeFragment extends Fragment implements View.OnClickListener{
         List<UserInforBean> list = userInforBeanDao.loadAll();
         if(list.get(0)!=null) {
             mUserBean = list.get(0);
+            Log.d("hjg", "mUserBean: "+mUserBean);
+            Log.d("hjg", "image: "+mUserBean.getHead_image());
         }
-        if(!TextUtils.isEmpty(mUserBean.getUser_headimage())) {
-            imageLoader.displayImage(mUserBean.getUser_headimage(), mUserHeadImageAIV, options);
+        if(!TextUtils.isEmpty(mUserBean.getHead_image())) {
+            imageLoader.displayImage(mUserBean.getHead_image(), mUserHeadImageAIV, options);
         }
-        if(!TextUtils.isEmpty(mUserBean.getUser_name())){
-            mUserNameTV.setText(mUserBean.getUser_name());
+        if(!TextUtils.isEmpty(mUserBean.getNickname())){
+            mUserNameTV.setText(mUserBean.getNickname());
         }
-        if(!TextUtils.isEmpty(String.valueOf(mUserBean.getUser_num()))){
-            mUserPhoneTV.setText(String.valueOf(mUserBean.getUser_num()));
+        if(!TextUtils.isEmpty(String.valueOf(mUserBean.getContact_phone()))){
+            mUserPhoneTV.setText(String.valueOf(mUserBean.getContact_phone()));
         }
     }
 

@@ -1,6 +1,7 @@
 package com.example.thinkpad.icompetition.network;
 
 import android.support.v4.util.ArrayMap;
+import android.util.Log;
 
 import com.example.thinkpad.icompetition.network.request.JsonPostRequest;
 
@@ -38,6 +39,16 @@ class NetworkRequest {
     void sendRequest() {
         mRequestParam = SignUtil.getRequestParam(mRequestParam);    //为请求参数添加数字签名
         Request request = new JsonPostRequest(mUrl, mRequestParam).getRequest();    //创建一个请求
+        Call call = NetworkManager.getNetWorkManager().getHttpClient().newCall(request);
+        call.enqueue(mCallback);    //发送请求
+    }
+
+    /**
+     * 拼装业务参数与系统参数,添加数字签名并发送请求
+     */
+    void sendRequestByMethod(String method) {
+        mRequestParam = SignUtil.getRequestParam(mRequestParam);    //为请求参数添加数字签名
+        Request request = new JsonPostRequest(mUrl, mRequestParam).getRequestByMethod(method);    //创建一个请求
         Call call = NetworkManager.getNetWorkManager().getHttpClient().newCall(request);
         call.enqueue(mCallback);    //发送请求
     }

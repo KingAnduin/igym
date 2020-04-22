@@ -1,8 +1,10 @@
 package com.example.thinkpad.icompetition.model.entity.user;
 
+import java.util.List;
+
 public class UserInforRoot {
     private int code;
-    private UserInforBean data;
+    private List<UserInforBean> data;
     private String msg;
 
     public int getCode() {
@@ -13,11 +15,11 @@ public class UserInforRoot {
         this.code = code;
     }
 
-    public UserInforBean getData() {
+    public List<UserInforBean> getData() {
         return data;
     }
 
-    public void setData(UserInforBean data) {
+    public void setData(List<UserInforBean> data) {
         this.data = data;
     }
 

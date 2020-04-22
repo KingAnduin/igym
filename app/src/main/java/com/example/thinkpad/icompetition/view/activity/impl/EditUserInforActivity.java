@@ -6,6 +6,7 @@ import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -70,7 +71,7 @@ public class EditUserInforActivity extends BaseActivity<EditUserInforPresenter> 
     private int mDay=calendar.get(Calendar.DAY_OF_MONTH);
     private String birthday = null;
     private ProgressDialog mProgressDialog;
-    private boolean haveHeadImage = false; //提交的用户信息中是否包含头像
+    private String user_account;
     //以下是有关头像处理的变量
     private Bitmap bitmap;
     protected static Uri tempUri; //用于给出图片的uri
@@ -92,17 +93,17 @@ public class EditUserInforActivity extends BaseActivity<EditUserInforPresenter> 
         //将信息填入对应控件
         if(getIntent().getSerializableExtra("userinfor")!=null){
             mUserInforBean=(UserInforBean) getIntent().getSerializableExtra("userinfor");///////////////////////
-            if(!TextUtils.isEmpty(mUserInforBean.getUser_name())) {
-                mUserNameET.setText(mUserInforBean.getUser_name());
+            if(!TextUtils.isEmpty(mUserInforBean.getNickname())) {
+                mUserNameET.setText(mUserInforBean.getNickname());
             }
-            if(!TextUtils.isEmpty(mUserInforBean.getUser_sex())) {
-                mUserSexTV.setText(mUserInforBean.getUser_sex());
+            if(!TextUtils.isEmpty(mUserInforBean.getSex())) {
+                mUserSexTV.setText(mUserInforBean.getSex());
             }
-            if(!TextUtils.isEmpty(mUserInforBean.getUser_birthday())) {
-                mUserBirthdayTV.setText(mUserInforBean.getUser_birthday());
+            if(!TextUtils.isEmpty(mUserInforBean.getBirthday())) {
+                mUserBirthdayTV.setText(mUserInforBean.getBirthday());
             }
-            if(!TextUtils.isEmpty(mUserInforBean.getUser_headimage())) {
-                imageLoader.displayImage(mUserInforBean.getUser_headimage(), mUserHeadImageAIV, options);
+            if(!TextUtils.isEmpty(mUserInforBean.getHead_image())) {
+                imageLoader.displayImage(mUserInforBean.getHead_image(), mUserHeadImageAIV, options);
             }
         }
     }
@@ -160,7 +161,7 @@ public class EditUserInforActivity extends BaseActivity<EditUserInforPresenter> 
         }
         else {
             if (NetWorkHelper.isNetworkAvailable(this)) {
-                mPresenter.getUserInfor(String.valueOf(mUserInforBean.getUser_num()));
+                mPresenter.getUserInfor(String.valueOf(mUserInforBean.getContact_phone()));
             } else {
                 showSnackBar(mUserNameET, getString(R.string.not_have_network), getMainColor());
             }
@@ -207,20 +208,21 @@ public class EditUserInforActivity extends BaseActivity<EditUserInforPresenter> 
     private void submitUserInfor() {
         if(NetWorkHelper.isNetworkAvailable(this)) {
             if(!TextUtils.isEmpty(mUserNameET.getText().toString())) {
-                mUserInforBean.setUser_name(mUserNameET.getText().toString());
+                mUserInforBean.setNickname(mUserNameET.getText().toString());
             }
             if(!TextUtils.isEmpty(mUserSexTV.getText().toString())) {
-                mUserInforBean.setUser_sex(mUserSexTV.getText().toString());
+                mUserInforBean.setSex(mUserSexTV.getText().toString());
             }
             if(!TextUtils.isEmpty(mUserBirthdayTV.getText().toString())) {
-                mUserInforBean.setUser_birthday(mUserBirthdayTV.getText().toString());
+                mUserInforBean.setBirthday(mUserBirthdayTV.getText().toString());
             }
             if(!TextUtils.isEmpty(str_icon_stream)) {
-                mUserInforBean.setUser_headimage(str_icon_stream);
-                haveHeadImage=true;
+                mUserInforBean.setHead_image(str_icon_stream);
             }
             //mUserInforBean.setUser_interest("计算机");
-            mPresenter.submitUserInfor(mUserInforBean,haveHeadImage);
+            SharedPreferences sharedPreferences = getSharedPreferences("ApplicationBase", MODE_PRIVATE);
+            user_account = sharedPreferences.getString("userNumber", "");
+            mPresenter.submitUserInfor(mUserInforBean,user_account);
             showProgressBarDialog();
         }else{
             showSnackBar(mUserSexTV,getString(R.string.not_have_network),getMainColor());

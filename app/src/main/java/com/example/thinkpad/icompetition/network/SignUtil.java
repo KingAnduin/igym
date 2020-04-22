@@ -26,14 +26,8 @@ import java.util.TreeMap;
 
 public class SignUtil {
 
-//	private static final String appSecret = "ilHie7HYD4i7w5H4R0g9Mj4hYESgux1o";   //密钥-正式
-//	private static final String appKey = "6a8082f075ac904c3818a64dbc4e73fd";      //app key-正式
-
 	private static final String appSecret = "ADMLOSpsU1f05gSuDyFyA5yjKGeSuxlp";   //密钥-开发版
 	private static final String appKey = "D8vNFm8jklo9uNmg2ibpDp0FHm65R2Ac";      //app key-开发版
-//
-//	private static final String appSecret = "CvvPuOpsU1f05gSuDyFyA5yjKESgux1o";     //密钥-测试
-//	private static final String appKey = "H9vUQm8nmwn9uNmg2ibRDp0BRm32R2qS";        //app key-测试
 
 	private static final String version = "2.0";           //API协议版本
 	private static final String encryptMethod = "md5";     //加密方法,可选:"md5","hmac"

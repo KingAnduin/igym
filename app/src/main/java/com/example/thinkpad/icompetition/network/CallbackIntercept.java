@@ -59,7 +59,7 @@ public abstract class CallbackIntercept implements Callback {
         final String jsonBody = response.body().string();     //返回的json字串
         JSONObject jsonObject = null;
         int code = 0;                                   //用于存放服务器返回的code,根据code拦截请求
-        System.out.println("--->" + jsonBody);
+        //System.out.println("--->" + jsonBody);
         try {
             jsonObject = new JSONObject(jsonBody);
             code = jsonObject.getInt("code");           //获取code

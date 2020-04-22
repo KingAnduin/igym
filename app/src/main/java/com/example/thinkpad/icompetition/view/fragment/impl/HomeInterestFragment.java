@@ -88,7 +88,7 @@ public class HomeInterestFragment
                 mUserBean = list.get(0);
             }
 
-            userInterest = mUserBean.getUser_interest();
+            //userInterest = mUserBean.getUser_interest();
         }
     }
 

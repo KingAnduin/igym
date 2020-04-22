@@ -114,7 +114,7 @@ public class MyCollectionActivity
                         mRecyclerViewCurrentY = dy;
                         mRecyclerViewCurrentX = dx;
                         //加载更多
-                        getCollectionInfo(String.valueOf(mUserBean.getUser_num()), ++mCurrentPage, page_size);
+                        getCollectionInfo(String.valueOf(mUserBean.getContact_phone()), ++mCurrentPage, page_size);
                     }
                 }
             }
@@ -215,7 +215,7 @@ public class MyCollectionActivity
                 mSwipeRefreshLayout.setRefreshing(true);
             }
         });
-        getCollectionInfo(String.valueOf(mUserBean.getUser_num()), mCurrentPage, page_size);
+        getCollectionInfo(String.valueOf(mUserBean.getContact_phone()), mCurrentPage, page_size);
     }
 
     /**

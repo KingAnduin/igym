@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -73,19 +74,6 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
         mImageView=findViewById(R.id.bg_login);
         mRegisterTV=findViewById(R.id.tv_register);
         //loadBackground();
-    }
-
-    //Glide高斯模糊加载背景图
-    private void loadBackground() {
-        Glide.with(LoginActivity.this)
-                .load(R.drawable.loginbackground)
-                .dontAnimate()
-                .error(R.drawable.loginbackground)
-                .centerCrop()
-                .crossFade(0)
-                // 设置高斯模糊
-                .bitmapTransform(new BlurTransformation(this, 5))
-                .into(mImageView);
     }
 
     @Override
@@ -177,10 +165,11 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     @Override
     public void loginReturn(LoginRoot root) {
         if(root.getCode()==200) {
-            ((IcompetitionApplication) getApplication()).setToken(root.getData().get(0).get_$Token251());//保存token至sharedpreferences
+            //保存token至sharedpreferences
+            ((IcompetitionApplication) getApplication()).setToken(root.getData().get_$Token251());
             getUserInfor();
         }
-        if(root.getCode()==1)
+        if(root.getCode()==201)
         {
             runOnUiThread(new Runnable() {
                 @Override
@@ -192,7 +181,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
             mLoginBt.setClickable(true);
             showSnackBar(mLoginBt,"账户尚未注册",getMainColor());
         }
-        if(root.getCode()==2)
+        if(root.getCode()==202)
         {
             runOnUiThread(new Runnable() {
                 @Override
@@ -211,7 +200,7 @@ public class LoginActivity extends BaseActivity<LoginPresenter> implements ILogi
     public void getUserInforReturn(UserInforRoot root) {
         SharedPreferences sharedPreferences = getApplicationContext().getSharedPreferences("user_login",Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("user_login_num",String.valueOf(root.getData().getUser_num()));
+        editor.putString("user_login_num",mUserNameEt.getText().toString());
         editor.putString("user_login_pwd",mUserPassWordEt.getText().toString());
         editor.commit();
         startActivity(new Intent(LoginActivity.this,MainActivity.class));

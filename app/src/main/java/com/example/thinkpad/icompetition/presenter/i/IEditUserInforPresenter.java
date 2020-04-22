@@ -4,7 +4,7 @@ import com.example.thinkpad.icompetition.model.entity.user.UserInforBean;
 
 public interface IEditUserInforPresenter extends IBasePresenter{
     //提交用户信息
-    void submitUserInfor(UserInforBean bean,boolean haveHeadImage);
+    void submitUserInfor(UserInforBean bean,String user_account);
     //获取用户信息
     void getUserInfor(String num);
 }
