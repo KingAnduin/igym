@@ -2,15 +2,9 @@ package com.example.thinkpad.icompetition.view.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.graphics.Color;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.text.Spanned;
 import android.text.TextPaint;
-import android.text.style.ForegroundColorSpan;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +14,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.thinkpad.icompetition.R;
-import com.example.thinkpad.icompetition.model.entity.exam.ExamRecordItemBean;
-import com.example.thinkpad.icompetition.view.widget.DateCount;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import com.example.thinkpad.icompetition.model.entity.news.NewsItem;
 import java.util.List;
 
 /**
@@ -37,22 +27,22 @@ public class HomeRecommendAdapter
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private final int FOOT = -1;
-    private List<ExamRecordItemBean> mExamRecordInfo;                   //信息
+    private List<NewsItem> mNewsInfo;                   //信息
     private boolean mNoMoreData = false;                                //数据是否加载完毕
     private docItemClickListener itemClickListener;                     //item监听器
     private int mPosition = 1;                                          //用于记录哪一个item被点击
 
-    public HomeRecommendAdapter(Context context, List<ExamRecordItemBean> info){
+    public HomeRecommendAdapter(Context context, List<NewsItem> info){
         mContext = context;
-        mExamRecordInfo = info;
+        mNewsInfo = info;
         mLayoutInflater = LayoutInflater.from(context);
     }
 
     /**
      * 更新数据
      */
-    public void updateData(List<ExamRecordItemBean> info){
-        this.mExamRecordInfo = info;
+    public void updateData(List<NewsItem> info){
+        this.mNewsInfo = info;
         this.notifyDataSetChanged();
     }
 
@@ -85,7 +75,7 @@ public class HomeRecommendAdapter
         if(viewType == FOOT){
             return new HomeRecommendAdapter.FootViewHolder(mLayoutInflater.inflate(R.layout.item_typefoot, parent, false));
         }
-        return new HomeRecommendAdapter.BodyViewHolder(mLayoutInflater.inflate(R.layout.item_home_exam, parent, false));
+        return new HomeRecommendAdapter.BodyViewHolder(mLayoutInflater.inflate(R.layout.item_home_news, parent, false));
     }
 
     @Override
@@ -111,12 +101,12 @@ public class HomeRecommendAdapter
 
     @Override
     public int getItemCount() {
-        return mExamRecordInfo.size() + 1;
+        return mNewsInfo.size() + 1;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if(position == mExamRecordInfo.size()){
+        if(position == mNewsInfo.size()){
             return FOOT;
         }
         return 1;
@@ -129,83 +119,40 @@ public class HomeRecommendAdapter
      */
     public class BodyViewHolder extends RecyclerView.ViewHolder{
         private CardView mItemCv;
-        private ImageView mPhotoIv;             //比赛图片
-        private TextView mIsStartTv;            //正在报名 报名结束
-        private TextView mDeadlineTv;           //离报名截止时间
-        private TextView mTitleTv;              //比赛标题
-        private TextView mStartTimeTv;          //报名时间
-        private TextView mExamTimeTv;           //比赛时间
-        //private TextView mOrganizerTv;          //主办方
+        private ImageView mPhotoIv;             //图片
+        private TextView mTitleTv;              //标题
+        private TextView mTypeTv;               //类型
+        private TextView mLevelTv;              //等级
+        private TextView mEquipmentTv;          //器械要求
 
         public BodyViewHolder(View itemView) {
             super(itemView);
-            mItemCv = itemView.findViewById(R.id.cv_item_home_list);
-            mPhotoIv = itemView.findViewById(R.id.iv_item_home_list_photo);
-            mIsStartTv = itemView.findViewById(R.id.tv_item_home_list_is_start);
-            //字体加粗
-            TextPaint tp1 = mIsStartTv.getPaint();
-            tp1.setFakeBoldText(true);
-            mDeadlineTv = itemView.findViewById(R.id.tv_item_home_list_deadline);
-            mTitleTv = itemView.findViewById(R.id.tv_item_home_list_title);
+            mItemCv = itemView.findViewById(R.id.cv_item_home_news);
+            mPhotoIv = itemView.findViewById(R.id.iv_item_home_news_photo);
+            mTitleTv = itemView.findViewById(R.id.tv_item_home_news_title);
             //字体加粗
             TextPaint tp = mTitleTv.getPaint();
             tp.setFakeBoldText(true);
-            mStartTimeTv = itemView.findViewById(R.id.tv_item_home_list_start_time);
-            mExamTimeTv = itemView.findViewById(R.id.tv_item_home_list_exam_time);
-            //mOrganizerTv = itemView.findViewById(R.id.tv_item_home_list_organizer);
+            mTypeTv = itemView.findViewById(R.id.tv_item_home_news_type);
+            mLevelTv = itemView.findViewById(R.id.tv_item_home_news_level);
+            mEquipmentTv = itemView.findViewById(R.id.tv_item_home_news_equipment);
+
         }
 
         //填写数据
         public void setDate(int position){
-            ExamRecordItemBean itemBean = mExamRecordInfo.get(position);
-            String[] signUpStart = itemBean.getCom_signupstart().split(" ");
-            String[] signUpEnd = itemBean.getCom_signupend().split(" ");
-            String signUpTime = signUpStart[0] + " -- " + signUpEnd[0];
-            String[] examStart = itemBean.getCom_starttime().split(" ");
-            String[] examEnd = itemBean.getCom_endtime().split(" ");
-            String examTime = examStart[0] + " -- " + examEnd[0];
-
-            //设置字体颜色
-            SimpleDateFormat format = new SimpleDateFormat("yyyy.MM.dd");
-            Date curDate = new Date(System.currentTimeMillis());
-            String curDates = format.format(curDate);
-            DateCount dateCount = new DateCount();
-            Long counts = dateCount.count(curDates, signUpEnd[0], "yyyy.MM.dd");
-            if(counts > 0){
-                mIsStartTv.setText(R.string.item_home_list_is_start);
-                mIsStartTv.setTextColor(Color.GREEN);
-                mDeadlineTv.setText(formatSpannableString(mContext, mContext.getString(R.string.item_home_list_deadline), String.valueOf(counts)));
-            }else {
-                mIsStartTv.setText(R.string.item_home_list_started);
-                mIsStartTv.setTextColor(Color.RED);
-                mDeadlineTv.setText(R.string.item_home_list_is_end);
-            }
+            NewsItem itemBean = mNewsInfo.get(position);
 
             //加载图片
-            String imageUrl = itemBean.getCom_picture();
+            String imageUrl = itemBean.getNews_image();
             if (!imageUrl.equals("")){
                 Glide.with(mContext).load(imageUrl).centerCrop().into(mPhotoIv);
             }
 
-            mTitleTv.setText(itemBean.getCom_title());
-            mStartTimeTv.setText(formatSpannableString(mContext, mContext.getString(R.string.item_home_list_time_sign_up), signUpTime));
-            mExamTimeTv.setText(formatSpannableString(mContext, mContext.getString(R.string.item_home_list_time_exam), examTime));
-            //mOrganizerTv.setText(formatSpannableString(mContext, mContext.getString(R.string.item_home_list_organizer), itemBean.getCom_sponsor()));
-
-        }
-
-        private SpannableString formatSpannableString(Context context, String title, String content) {
-            if (content == null) {
-                content = "";
-            }
-            SpannableString result = new SpannableString(String.format(title, content));
-            ForegroundColorSpan contentSpan = new ForegroundColorSpan(
-                    ContextCompat.getColor(context, R.color.font_black_primary));
-            result.setSpan(contentSpan,
-                    result.length() - content.length(),
-                    result.length(),
-                    Spanned.SPAN_EXCLUSIVE_INCLUSIVE);
-            return result;
+            mTitleTv.setText(itemBean.getNews_title());
+            mTypeTv.setText(itemBean.getNews_type());
+            mLevelTv.setText(itemBean.getNews_level());
+            mEquipmentTv.setText(itemBean.getNews_equipment());
         }
 
     }

@@ -8,14 +8,15 @@ import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.thinkpad.icompetition.R;
-import com.example.thinkpad.icompetition.model.entity.exam.ExamRecordItemBean;
-import com.example.thinkpad.icompetition.model.entity.exam.ExamRecordRoot;
+import com.example.thinkpad.icompetition.model.entity.news.NewsItem;
+import com.example.thinkpad.icompetition.model.entity.news.NewsRoot;
 import com.example.thinkpad.icompetition.presenter.impl.HomeRecommendFragmentPresenter;
 import com.example.thinkpad.icompetition.util.NetWorkHelper;
 import com.example.thinkpad.icompetition.view.activity.i.IBaseActivity;
@@ -42,9 +43,9 @@ public class HomeRecommendFragment
     private int mRecyclerViewCurrentX = 0;
 
     private Handler mHandler = new Handler();
-    List<ExamRecordItemBean> mInfo;                         //详细信息
+    List<NewsItem> mInfo;                         //详细信息
     private int mCurrentPage = 1;                           //页数
-    private final int page_size = 10;                       //每页信息数
+    private final int page_size = 5;                       //每页信息数
     private boolean mNoMoreData = false;
 
     @Nullable
@@ -78,8 +79,6 @@ public class HomeRecommendFragment
             mPresenter.getRecommendInfo(page_no, page_size);
         }else {
             Toast.makeText(getActivity(), getString(R.string.not_have_network), Toast.LENGTH_SHORT).show();
-            //showSnackBar(mRecyclerView,getString(R.string.not_have_network));
-
         }
     }
 
@@ -101,7 +100,7 @@ public class HomeRecommendFragment
 
     //分页请求数据的返回
     @Override
-    public void PagingQueryHomeRecommendResponse(final ExamRecordRoot root) {
+    public void PagingQueryHomeRecommendResponse(final NewsRoot root) {
         if (root != null && root.getCode() == 200) {
             if (root.getData() != null) {
                 if (mInfo == null) {
@@ -117,7 +116,9 @@ public class HomeRecommendFragment
                         }
                         if (mAdapter == null) {
                             mAdapter = new HomeRecommendAdapter(getContext(), mInfo);
-                            if (root.getData().size() < page_size) {
+
+                            //if (root.getData().size() < page_size) {
+                            if (root.getTotal_page() == mCurrentPage) {
                                 //显示没有更多
                                 mNoMoreData = true;
                                 mAdapter.setNoMoreData(true);
@@ -126,7 +127,9 @@ public class HomeRecommendFragment
                         } else {
                             //更新数据
                             mAdapter.updateData(mInfo);
-                            if (mInfo.size() < page_size) {
+
+                            //if (mInfo.size() < page_size) {
+                            if (root.getTotal_page() == mCurrentPage) {
                                 //显示没有更多
                                 mNoMoreData = true;
                                 mAdapter.setNoMoreData(true);

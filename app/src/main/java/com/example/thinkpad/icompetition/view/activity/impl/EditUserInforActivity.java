@@ -221,7 +221,8 @@ public class EditUserInforActivity extends BaseActivity<EditUserInforPresenter> 
             }
             //mUserInforBean.setUser_interest("计算机");
             SharedPreferences sharedPreferences = getSharedPreferences("ApplicationBase", MODE_PRIVATE);
-            user_account = sharedPreferences.getString("userNumber", "");
+            Long account = sharedPreferences.getLong("userNumber", 1);
+            user_account = String.valueOf(account);
             mPresenter.submitUserInfor(mUserInforBean,user_account);
             showProgressBarDialog();
         }else{
@@ -380,7 +381,8 @@ public class EditUserInforActivity extends BaseActivity<EditUserInforPresenter> 
                 mYear=year;
                 mMonth=month;
                 mDay=dayOfMonth;
-                birthday = new StringBuffer().append(mYear).append("年").append(mMonth+1).append("月").append(mDay).append("日").toString();
+                //TODO 格式有问题
+                birthday = new StringBuffer().append(mYear).append("-").append(mMonth+1).append("-").append(mDay).toString();
                 mUserBirthdayTV.setText(birthday);
             }
         };

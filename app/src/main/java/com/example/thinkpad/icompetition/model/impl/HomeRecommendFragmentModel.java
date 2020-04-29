@@ -1,7 +1,8 @@
 package com.example.thinkpad.icompetition.model.impl;
 
 import com.example.thinkpad.icompetition.model.entity.exam.ExamRecordRoot;
-import com.example.thinkpad.icompetition.model.event.HomeRecommendEvent;
+import com.example.thinkpad.icompetition.model.entity.news.NewsRoot;
+import com.example.thinkpad.icompetition.model.event.HomeRecommendNewsEvent;
 import com.example.thinkpad.icompetition.model.i.IHomeRecommendFragmentModel;
 import com.example.thinkpad.icompetition.network.CallbackIntercept;
 import com.example.thinkpad.icompetition.network.NetworkInterfaces;
@@ -14,9 +15,9 @@ import okhttp3.Callback;
  * Created by Hjg on 2018/11/26.
  */
 public class HomeRecommendFragmentModel
-        extends BaseFragmentModel<HomeRecommendEvent> implements IHomeRecommendFragmentModel {
+        extends BaseFragmentModel<HomeRecommendNewsEvent> implements IHomeRecommendFragmentModel {
 
-    public HomeRecommendFragmentModel(OnEventReceiveListener<HomeRecommendEvent> eventReceiveListener) {
+    public HomeRecommendFragmentModel(OnEventReceiveListener<HomeRecommendNewsEvent> eventReceiveListener) {
         super(eventReceiveListener);
     }
 
@@ -26,14 +27,14 @@ public class HomeRecommendFragmentModel
         Callback callback = new CallbackIntercept(){
             @Override
             public void onSuccess(Call call, String jsonBody) {
-                HomeRecommendEvent event = new HomeRecommendEvent();
+                HomeRecommendNewsEvent event = new HomeRecommendNewsEvent();
                 Gson gson = new Gson();
-                ExamRecordRoot recordRoot = gson.fromJson(jsonBody, ExamRecordRoot.class);
+                NewsRoot recordRoot = gson.fromJson(jsonBody, NewsRoot.class);
                 if(recordRoot!=null && recordRoot.getCode() != 0){
-                    event.setWhat(HomeRecommendEvent.GET_RECOMMEND_OK);
+                    event.setWhat(HomeRecommendNewsEvent.GET_RECOMMEND_OK);
                     event.setRoot(recordRoot);
                 }else {
-                    event.setWhat(HomeRecommendEvent.GET_RECOMMEND_FAIL);
+                    event.setWhat(HomeRecommendNewsEvent.GET_RECOMMEND_FAIL);
                 }
 
                 postEvent(event);
@@ -41,8 +42,8 @@ public class HomeRecommendFragmentModel
 
             @Override
             public void onFail(Call call, Exception e) {
-                HomeRecommendEvent event = new HomeRecommendEvent();
-                event.setWhat(HomeRecommendEvent.GET_RECOMMEND_FAIL);
+                HomeRecommendNewsEvent event = new HomeRecommendNewsEvent();
+                event.setWhat(HomeRecommendNewsEvent.GET_RECOMMEND_FAIL);
                 postEvent(event);
             }
         };

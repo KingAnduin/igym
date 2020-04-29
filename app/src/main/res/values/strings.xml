@@ -2,7 +2,7 @@
     <string name="app_name">i竞赛</string>
 
     <!--主页标题-->
-    <string name="competition">竞赛汇聚地</string>
+    <string name="competition">器械课程</string>
     <string name="me">我的地盘</string>
 
     <!-- 通用 -->
@@ -73,7 +73,7 @@
     <string name="competition_info_time_sign_up">报名时间</string>
     <string name="competition_info_time_exam">考试时间</string>
     <string name="competition_info_organizer">主办方</string>
-    <string name="competition_info_webView">前往官网报名</string>
+    <string name="competition_info_webView">了解详情</string>
 
 
     <!-- ItemFoot -->

@@ -145,9 +145,12 @@ public class NetworkInterfaces {
      */
     public void getItemExam(Callback callback, int page_no, int page_size){
         ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("page", String.valueOf(page_no));
-        param.put("pageSize", String.valueOf(page_size));
-        new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_EXAM, callback).sendRequest();
+        //param.put("page", String.valueOf(page_no));
+        //param.put("pageSize", String.valueOf(page_size));
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String PAGING_QUERY_EXAM = "/api/news/newsInfo/?page=" + page_no;
+        new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_EXAM, callback).sendRequestByMethod("GET");
     }
 
     /**

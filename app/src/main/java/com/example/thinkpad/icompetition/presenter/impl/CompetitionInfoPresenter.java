@@ -28,52 +28,7 @@ public class CompetitionInfoPresenter
 
     @Override
     protected void eventReceive(Message msg) {
-        switch (msg.what){
-            case CompetitionInfoEvent.COLLECTION_ADD_OK:
-                CollectionRoot root = ((CompetitionInfoEvent)msg.obj).getRoot();
-                mView.addCollectionResponse(root);
-                break;
-            case CompetitionInfoEvent.COLLECTION_ADD_FAIL:
-                mView.failBecauseNotNetworkReturn(msg.what);
-                break;
-            case CompetitionInfoEvent.COLLECTION_CANCEL_OK:
-                CollectionRoot root1 = ((CompetitionInfoEvent)msg.obj).getRoot();
-                mView.cancelCollectionResponse(root1);
-                break;
-            case CompetitionInfoEvent.COLLECTION_CANCEL_FAIL:
-                mView.failBecauseNotNetworkReturn(msg.what);
-                break;
-            case CompetitionInfoEvent.COLLECTION_IS_OK:
-                IsCollectionRoot root2 = ((CompetitionInfoEvent)msg.obj).getIsCollectionRoot();
-                mView.getIsCollectionResponse(root2);
-                break;
-            case CompetitionInfoEvent.COLLECTION_IS_FAIL:
-                mView.failBecauseNotNetworkReturn(msg.what);
-                break;
 
-            //关注
-            case FocusEvent.GET_ISCONCERN_OK:
-                IsConcernRoot concernRoot = ((FocusEvent)msg.obj).getRoot();
-                mView.getIsAttentionResponse(concernRoot);
-                break;
-            case FocusEvent.GET_ISCONCERN_FAIL:
-                mView.failBecauseNotNetworkReturn(msg.what);
-                break;
-            case FocusEvent.ADD_CONCERN_OK:
-                MyFocusRoot focusRoot = ((FocusEvent)msg.obj).getMyFocusRoot();
-                mView.addAttentionResponse(focusRoot);
-                break;
-            case FocusEvent.ADD_CONCERN_FAIL:
-                mView.failBecauseNotNetworkReturn(msg.what);
-                break;
-            case FocusEvent.DELETE_CONCERN_OK:
-                MyFocusRoot focusRoot2 = ((FocusEvent)msg.obj).getMyFocusRoot();
-                mView.cancelAttentionResponse(focusRoot2);
-                break;
-            case FocusEvent.DELETE_CONCERN_FAIL:
-                mView.failBecauseNotNetworkReturn(msg.what);
-                break;
-        }
     }
 
     @Override

@@ -33,13 +33,13 @@ public class InFragmentAdapter extends FragmentPagerAdapter {
         String title = "";
         switch (position) {
             case 1:
-                title="最新";
+                title="推荐";
                 break;
             case 2:
-                title="兴趣";
+                title="预约教练";
                 break;
             default:
-                title="热门";
+                title="器械及场地";
                 break;
         }
         return title;

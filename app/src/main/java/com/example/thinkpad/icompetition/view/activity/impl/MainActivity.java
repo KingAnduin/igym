@@ -115,7 +115,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
             public void onPageSelected(int position) {
                 switch (position) {
                     case 0:
-                        mToolbarTitleTV.setText("竞赛汇聚地");
+                        mToolbarTitleTV.setText("器械课程");
                         mToolbar.getMenu().setGroupVisible(R.id.group_search,true);
                         break;
                     case 1:

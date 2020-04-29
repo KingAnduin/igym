@@ -8,7 +8,7 @@
     android:id="@+id/tab_competition"
     android:layout_width="match_parent"
     android:layout_height="40dp"
-    android:background="#D97D54"
+    android:background="#424242"
     app:tabTextColor="#fff"
     app:tabSelectedTextColor="#FFF68F"
     app:tabIndicatorColor="#FFF68F"

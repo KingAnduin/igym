@@ -4,6 +4,7 @@ import android.support.annotation.NonNull;
 import android.text.TextUtils;
 
 import com.example.thinkpad.icompetition.model.event.HomeRecommendEvent;
+import com.example.thinkpad.icompetition.model.event.HomeRecommendNewsEvent;
 import com.example.thinkpad.icompetition.model.impl.BaseFragmentModel;
 import com.example.thinkpad.icompetition.model.impl.HomeRecommendFragmentModel;
 import com.example.thinkpad.icompetition.presenter.i.IHomeRecommendFragmentPresent;
@@ -13,7 +14,7 @@ import com.example.thinkpad.icompetition.view.fragment.impl.HomeRecommendFragmen
  * Created by Hjg on 2018/11/26.
  */
 public class HomeRecommendFragmentPresenter
-        extends BaseFragmentPresenter<HomeRecommendFragment, HomeRecommendFragmentModel, HomeRecommendEvent>
+        extends BaseFragmentPresenter<HomeRecommendFragment, HomeRecommendFragmentModel, HomeRecommendNewsEvent>
         implements IHomeRecommendFragmentPresent {
     public HomeRecommendFragmentPresenter(HomeRecommendFragment view) {
         super(view);
@@ -25,13 +26,13 @@ public class HomeRecommendFragmentPresenter
     }
 
     @Override
-    protected HomeRecommendFragmentModel getModel(@NonNull BaseFragmentModel.OnEventReceiveListener<HomeRecommendEvent> eventReceiveListener) {
+    protected HomeRecommendFragmentModel getModel(@NonNull BaseFragmentModel.OnEventReceiveListener<HomeRecommendNewsEvent> eventReceiveListener) {
         return new HomeRecommendFragmentModel(eventReceiveListener);
     }
 
 
     @Override
-    public void eventReceive(HomeRecommendEvent event, int what) {
+    public void eventReceive(HomeRecommendNewsEvent event, int what) {
         if(event!=null){
             switch (what){
                 case HomeRecommendEvent.GET_RECOMMEND_OK:

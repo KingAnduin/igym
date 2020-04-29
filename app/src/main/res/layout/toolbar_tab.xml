@@ -8,7 +8,7 @@
     android:minHeight="?attr/actionBarSize"
     android:fitsSystemWindows="true"
     app:title=" "
-    android:background="#D97D54"
+    android:background="#424242"
     app:titleMarginStart="10dp"
     app:titleMarginTop="2dp"
     app:titleTextColor="#fff"

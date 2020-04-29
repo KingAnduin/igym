@@ -3,8 +3,10 @@ package com.example.thinkpad.icompetition.presenter.impl;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.thinkpad.icompetition.model.entity.user.EditUserInforRoot;
+import com.example.thinkpad.icompetition.model.entity.user.LoginRoot;
 import com.example.thinkpad.icompetition.model.entity.user.UserInforBean;
 import com.example.thinkpad.icompetition.model.entity.user.UserInforRoot;
 import com.example.thinkpad.icompetition.model.event.EditUserInforEvent;
@@ -13,6 +15,7 @@ import com.example.thinkpad.icompetition.model.impl.EditUserInforModel;
 import com.example.thinkpad.icompetition.presenter.i.IBasePresenter;
 import com.example.thinkpad.icompetition.presenter.i.IEditUserInforPresenter;
 import com.example.thinkpad.icompetition.view.activity.impl.EditUserInforActivity;
+import com.google.gson.Gson;
 
 public class EditUserInforPresenter extends BasePresenter<EditUserInforActivity,EditUserInforModel> implements IBasePresenter,IEditUserInforPresenter {
     public EditUserInforPresenter(EditUserInforActivity view) {
@@ -46,7 +49,8 @@ public class EditUserInforPresenter extends BasePresenter<EditUserInforActivity,
             case LoginEvent.GETUERINFOR_OK:
                 UserInforRoot root = ((LoginEvent)msg.obj).getUserInforRoot();
                 mView.getUserInforReturn(root);
-                mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",root.getData().get(0).getId()).apply();
+                mView.getSharedPreferences("ApplicationBase", Context.MODE_PRIVATE).edit().putLong("userNumber",root.getData().get(0).getId()).apply();
+                //mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",root.getData().get(0).getId()).apply();
                 saveUserInforToDB(root.getData().get(0));
                 break;
             case LoginEvent.GETUSERINFOR_FAIL:

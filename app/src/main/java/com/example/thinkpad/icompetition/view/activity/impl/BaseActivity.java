@@ -63,6 +63,7 @@ public abstract class BaseActivity<T extends BasePresenter & IBasePresenter>
     private boolean isFinish;   //Activity被finish的标志,注意:被finish不一定立即destroy
     private Toast mToast;       //toast对象
 
+    @SuppressLint("SourceLockedOrientationActivity")
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

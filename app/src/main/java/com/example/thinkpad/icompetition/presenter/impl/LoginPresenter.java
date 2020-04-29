@@ -3,6 +3,7 @@ package com.example.thinkpad.icompetition.presenter.impl;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.example.thinkpad.icompetition.model.entity.user.LoginRoot;
 import com.example.thinkpad.icompetition.model.entity.user.UserInforBean;
@@ -48,7 +49,7 @@ public class LoginPresenter extends BasePresenter<LoginActivity, LoginModel> imp
             case LoginEvent.GETUERINFOR_OK:
                 UserInforRoot inforRoot = ((LoginEvent)msg.obj).getUserInforRoot();
                 // TODO ?
-                mView.getSharedPreferences("user", Context.MODE_PRIVATE).edit().putLong("userNumber",inforRoot.getData().get(0).getId()).apply();
+                mView.getSharedPreferences("ApplicationBase", Context.MODE_PRIVATE).edit().putLong("userNumber",inforRoot.getData().get(0).getId()).apply();
                 saveUserInforToDB(inforRoot.getData().get(0));
                 mView.getUserInforReturn(inforRoot);
                 break;

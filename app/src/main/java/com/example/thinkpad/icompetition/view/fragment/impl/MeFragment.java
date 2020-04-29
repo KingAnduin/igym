@@ -5,21 +5,18 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.thinkpad.icompetition.IcompetitionApplication;
 import com.example.thinkpad.icompetition.R;
 import com.example.thinkpad.icompetition.model.entity.user.UserInforBean;
 import com.example.thinkpad.icompetition.util.ShowReturnLoginUtil;
 import com.example.thinkpad.icompetition.view.activity.impl.InterstsSelectActivity;
-import com.example.thinkpad.icompetition.view.activity.impl.LoginActivity;
 import com.example.thinkpad.icompetition.view.activity.impl.MyCollectionActivity;
 import com.example.thinkpad.icompetition.view.activity.impl.MyFocusActivity;
 import com.example.thinkpad.icompetition.view.activity.impl.UserInforActivity;
@@ -43,7 +40,6 @@ import io.rong.imageloader.core.display.FadeInBitmapDisplayer;
 public class MeFragment extends Fragment implements View.OnClickListener{
     private TextView mUserPhoneTV;
     private TextView mUserNameTV;
-    private DaoSession mDaoSession;
     private UserInforBean mUserBean;
     private DisplayImageOptions options;
     private ImageLoader imageLoader = ImageLoader.getInstance();
@@ -80,13 +76,12 @@ public class MeFragment extends Fragment implements View.OnClickListener{
 
     //加载用户头像,名字以及电话
     private void loadUserInfor() {
-        mDaoSession=((IcompetitionApplication)getActivity().getApplication()).getDaoSession();
+        DaoSession mDaoSession = ((IcompetitionApplication) getActivity().getApplication()).getDaoSession();
         UserInforBeanDao userInforBeanDao = mDaoSession.getUserInforBeanDao();
         List<UserInforBean> list = userInforBeanDao.loadAll();
         if(list.get(0)!=null) {
             mUserBean = list.get(0);
-            Log.d("hjg", "mUserBean: "+mUserBean);
-            Log.d("hjg", "image: "+mUserBean.getHead_image());
+
         }
         if(!TextUtils.isEmpty(mUserBean.getHead_image())) {
             imageLoader.displayImage(mUserBean.getHead_image(), mUserHeadImageAIV, options);
