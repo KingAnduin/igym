@@ -52,6 +52,5 @@ public class MyFocusModel extends BaseModel
             }
 
         };
-        mNetworkInterface.queryByPageFocus(callback, page, pageSize, userNum);
     }
 }

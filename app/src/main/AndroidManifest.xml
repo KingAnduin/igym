@@ -27,7 +27,7 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity
             android:name=".view.activity.impl.SplashActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustPan|stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,44 +36,47 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.activity.impl.LoginActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.MainActivity"
             android:clearTaskOnLaunch="true"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.SearchActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:windowSoftInputMode="adjustPan"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.CompetitionInfoActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.UserInforActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.UserSetActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.RegisterActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.EditUserInforActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.ChangePasswordActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.UserBySearchActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
+            android:launchMode="singleTask"/>
+        <activity android:name=".view.activity.impl.CommentActivity"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <!--剪裁图片用到的activity-->
         <activity android:name="com.android.camera.CropImage"/>
-        <activity android:name=".view.activity.impl.MyCollectionActivity" />
+        <activity android:name=".view.activity.impl.MyOrderActivity" />
         <activity android:name=".view.activity.impl.CompetitionWebViewActivity" />
 
         <activity android:name=".view.activity.impl.InterstsSelectActivity"
-            android:screenOrientation="portrait"
+            android:screenOrientation="fullSensor"
             android:launchMode="singleTask"/>
         <activity android:name=".view.activity.impl.MyFocusActivity" />
 

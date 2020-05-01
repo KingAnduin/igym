@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white_FF"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        tools:ignore="UselessParent">
+
+        <include layout="@layout/toolbar_tab"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/et_comment"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:gravity="top"
+                android:hint="请填写评论内容"
+                android:textSize="16sp">
+            </EditText>
+
+            <Button
+                android:id="@+id/btn_add_comment"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_gravity="end"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                android:text="提交"
+                android:background="@drawable/background_circle_shape"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</RelativeLayout>

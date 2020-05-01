@@ -47,8 +47,7 @@ public class UserBySearchModel extends BaseModel implements IUserBySearchModel {
                 postEvent(event);
             }
         };
-        mNetworkInterface.getIsConcern(callback,other_num);
-    }
+     }
 
     @Override
     public void addConcern(String other_num) {
@@ -75,8 +74,7 @@ public class UserBySearchModel extends BaseModel implements IUserBySearchModel {
                 postEvent(event);
             }
         };
-        mNetworkInterface.addConcern(callback,other_num);
-    }
+   }
 
     @Override
     public void deleteConcern(String other_num) {
@@ -103,6 +101,5 @@ public class UserBySearchModel extends BaseModel implements IUserBySearchModel {
                 postEvent(event);
             }
         };
-        mNetworkInterface.deleteConcern(callback,other_num);
     }
 }

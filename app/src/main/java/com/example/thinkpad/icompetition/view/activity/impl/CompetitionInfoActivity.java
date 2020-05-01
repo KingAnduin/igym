@@ -22,7 +22,7 @@ import fm.jiecao.jcvideoplayer_lib.JCVideoPlayerStandard;
 
 /**
  * Created by a'su's on 2018/7/12.
- * 竞赛详情界面
+ * News详情界面
  */
 
 public class CompetitionInfoActivity

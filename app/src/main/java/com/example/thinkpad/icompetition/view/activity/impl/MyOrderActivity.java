@@ -14,14 +14,14 @@ import android.widget.TextView;
 
 import com.example.thinkpad.icompetition.IcompetitionApplication;
 import com.example.thinkpad.icompetition.R;
-import com.example.thinkpad.icompetition.model.entity.exam.ExamRecordItemBean;
-import com.example.thinkpad.icompetition.model.entity.exam.ExamRecordRoot;
+import com.example.thinkpad.icompetition.model.entity.order.OrderItem;
+import com.example.thinkpad.icompetition.model.entity.order.OrderRoot;
 import com.example.thinkpad.icompetition.model.entity.user.UserInforBean;
-import com.example.thinkpad.icompetition.presenter.impl.MyCollectionPresenter;
+import com.example.thinkpad.icompetition.presenter.impl.MyOrderPresenter;
 import com.example.thinkpad.icompetition.util.NetWorkHelper;
 import com.example.thinkpad.icompetition.view.activity.i.IBaseActivity;
-import com.example.thinkpad.icompetition.view.activity.i.IMyCollectionActivity;
-import com.example.thinkpad.icompetition.view.adapter.MyCollectionAdapter;
+import com.example.thinkpad.icompetition.view.activity.i.IMyOrderActivity;
+import com.example.thinkpad.icompetition.view.adapter.MyOrderAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,26 +31,24 @@ import greendao.gen.UserInforBeanDao;
 
 /**
  * Created By hjg on 2018/12/15
- * 我的-收藏
+ * 我的-订单
  */
-public class MyCollectionActivity
-        extends BaseActivity<MyCollectionPresenter>
-        implements IMyCollectionActivity, IBaseActivity {
+public class MyOrderActivity
+        extends BaseActivity<MyOrderPresenter>
+        implements IMyOrderActivity, IBaseActivity {
 
-    private MyCollectionAdapter mAdapter = null;
+    private MyOrderAdapter mAdapter = null;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
     private int mRecyclerViewCurrentY = 0;
     private int mRecyclerViewCurrentX = 0;
     private Toolbar mToolbar;
-    private TextView mTitleTV;
 
     private Handler mHandler = new Handler();
-    List<ExamRecordItemBean> mInfo;                         //详细信息
+    List<OrderItem> mInfo;                                  //详细信息
     private int mCurrentPage = 1;                           //页数
     private final int page_size = 10;                       //每页信息数
     private boolean mNoMoreData = false;
-    private DaoSession mDaoSession;
     private UserInforBean mUserBean;                        //用户信息
 
     @Override
@@ -69,7 +67,7 @@ public class MyCollectionActivity
     }
 
     public void init(){
-        mDaoSession=((IcompetitionApplication)getApplication()).getDaoSession();
+        DaoSession mDaoSession = ((IcompetitionApplication) getApplication()).getDaoSession();
         UserInforBeanDao userInforBeanDao = mDaoSession.getUserInforBeanDao();
         List<UserInforBean> list = userInforBeanDao.loadAll();
         if(list.get(0)!=null) {
@@ -78,13 +76,13 @@ public class MyCollectionActivity
     }
 
     public void initView(){
-        mTitleTV = findViewById(R.id.tv_toolbar_title);
+        TextView mTitleTV = findViewById(R.id.tv_toolbar_title);
         mToolbar = findViewById(R.id.toolbar_main);
         mRecyclerView = findViewById(R.id.rc_me_collection_list);
         mSwipeRefreshLayout = findViewById(R.id.srl_me_collection_list);
         mSwipeRefreshLayout.setColorSchemeColors(Color.BLUE, Color.GREEN, Color.RED);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        mTitleTV.setText(getString(R.string.collection));
+        mTitleTV.setText(getString(R.string.order));
         mToolbar.setNavigationIcon(R.mipmap.back);
         setSupportActionBar(mToolbar);
     }
@@ -122,8 +120,8 @@ public class MyCollectionActivity
     }
 
     @Override
-    protected MyCollectionPresenter getPresenter() {
-        return new MyCollectionPresenter(this);
+    protected MyOrderPresenter getPresenter() {
+        return new MyOrderPresenter(this);
     }
 
 
@@ -152,7 +150,7 @@ public class MyCollectionActivity
     }
 
     @Override
-    public void queryByPageCollectionResponse(final ExamRecordRoot root) {
+    public void queryByPageOrderResponse(final OrderRoot root) {
         if (root != null && root.getCode() == 200) {
             if (root.getData() != null) {
                 if (mInfo == null) {
@@ -167,8 +165,8 @@ public class MyCollectionActivity
                             mSwipeRefreshLayout.setRefreshing(false);
                         }
                         if (mAdapter == null) {
-                            mAdapter = new MyCollectionAdapter(getApplicationContext(), mInfo);
-                            if (root.getData().size() < page_size) {
+                            mAdapter = new MyOrderAdapter(getApplicationContext(), mInfo, MyOrderActivity.this);
+                            if (root.getTotal_page() == mCurrentPage) {
                                 //显示没有更多
                                 mNoMoreData = true;
                                 mAdapter.setNoMoreData(true);
@@ -177,7 +175,7 @@ public class MyCollectionActivity
                         } else {
                             //更新数据
                             mAdapter.updateData(mInfo);
-                            if (mInfo.size() < page_size) {
+                            if (root.getTotal_page() == mCurrentPage) {
                                 //显示没有更多
                                 mNoMoreData = true;
                                 mAdapter.setNoMoreData(true);
@@ -185,17 +183,36 @@ public class MyCollectionActivity
                             mAdapter.notifyDataSetChanged();
                             mRecyclerView.scrollTo(mRecyclerViewCurrentX, mRecyclerViewCurrentY);
                         }
-                        //设置点击事件
-                        gotoDoc();
                     }
                 });
-
             } else {
                 noMoreData();
             }
         } else {
             showSnackBar(mSwipeRefreshLayout, getResources().getString(R.string.request_fail), getMainColor());
         }
+    }
+
+
+    @Override
+    public void deleteOrder(int ID) {
+        mPresenter.deleteOrder(ID);
+    }
+
+    @Override
+    public void deleteResponse() {
+        showSnackBar(mRecyclerView, "删除成功", getMainColor());
+        mHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.mOrderInfo.remove(mAdapter.getClickPosition());
+                mAdapter.notifyItemRemoved(mAdapter.getClickPosition());
+                //删除单个信息后调整后面item的position
+                mAdapter.notifyItemRangeChanged(mAdapter.getClickPosition(),
+                        mAdapter.getItemCount()-mAdapter.getClickPosition());
+
+            }
+        });
     }
 
 
@@ -227,7 +244,7 @@ public class MyCollectionActivity
         mHandler.post(new Runnable() {
             @Override
             public void run() {
-                mAdapter = new MyCollectionAdapter(getApplicationContext(), mInfo);
+                mAdapter = new MyOrderAdapter(getApplicationContext(), mInfo, MyOrderActivity.this);
                 mAdapter.setNoMoreData(true);
                 mAdapter.notifyDataSetChanged();
                 mRecyclerView.setAdapter(mAdapter);
@@ -238,19 +255,11 @@ public class MyCollectionActivity
 
 
     /**
-     * 查看竞赛详情
+     * 新增评论
      */
-    private void gotoDoc() {
-        mAdapter.setItemClickListener(new MyCollectionAdapter.docItemClickListener() {
-            @Override
-            public void onClick(int position) {
-                Intent intent = new Intent(getApplicationContext(), CompetitionInfoActivity.class);
-                Bundle bundle = new Bundle();
-                bundle.putSerializable("item", mInfo.get(position));
-                intent.putExtras(bundle);
-                startActivity(intent);
-            }
-        });
+    public void addComment(int order_id) {
+        Intent intent = new Intent(getApplication(), CommentActivity.class);
+        intent.putExtra("order_id", order_id);
+        startActivity(intent);
     }
-
 }

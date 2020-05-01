@@ -45,6 +45,5 @@ public class SearchUserFragmentModel extends BaseFragmentModel<SearchEvent> impl
                 postEvent(event);
             }
         };
-        mNetworkInterface.searchInfor(callback,page,page_size,words);
-    }
+     }
 }

@@ -1,66 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/cv_me_collection"
-    android:layout_marginStart="8dp"
+    android:id="@+id/cv_me_order"
     android:layout_marginTop="8dp"
-    android:layout_marginEnd="8dp"
-    app:cardBackgroundColor="@color/background_white_FA"
-    app:cardCornerRadius="2dp"
+    android:layout_marginBottom="8dp"
+    android:layout_marginStart="16dp"
+    android:layout_marginEnd="16dp"
+    app:cardBackgroundColor="@color/background_white_FF"
+    app:cardCornerRadius="20dp"
     app:cardElevation="2dp">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp">
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:baselineAligned="false">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="预约状态"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="预约单编号"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="物品名"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="预约日期"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="预约时间段"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="创建时间"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:orientation="vertical"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp">
+
+
+                <TextView
+                    android:id="@+id/tv_order_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+
+
+                <TextView
+                    android:id="@+id/tv_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/fontSizeMedium" />
+
+                <TextView
+                    android:id="@+id/tv_order_good"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/fontSizeMedium" />
+                <TextView
+                    android:id="@+id/tv_order_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/fontSizeMedium"
+                    tools:ignore="HardcodedText" />
+                <TextView
+                    android:id="@+id/tv_order_time_period"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/fontSizeMedium"/>
+                <TextView
+                    android:id="@+id/tv_order_create_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:textSize="@dimen/fontSizeMedium"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="8dp"
+            android:gravity="end"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/tv_me_collection_is_start"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/item_home_list_is_start"
-                android:textColor="#00CCCC"
-                android:textSize="@dimen/fontSizeSmall" />
+            <Button
+                android:id="@+id/btn_order_comment"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="20dp"
+                android:text="评价"
+                android:textSize="16sp"
+                android:textColor="@color/main_bottom_tab_textcolor_normal"
+                android:background="@drawable/background_circle_shape"
+                tools:ignore="ButtonStyle,HardcodedText">
+            </Button>
 
-            <TextView
-                android:id="@+id/tv_me_collection_deadline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="@string/item_home_list_deadline"
-                android:textColor="@color/font_black_secondary"
-                android:textSize="@dimen/fontSizeSmall" />
+            <Button
+                android:id="@+id/btn_order_delete"
+                android:layout_width="100dp"
+                android:layout_height="30dp"
+                android:layout_marginEnd="10dp"
+                android:text="删除订单"
+                android:textSize="16sp"
+                android:textColor="@color/icompetition_color"
+                android:background="@drawable/background_circle_shape_delete"
+                tools:ignore="ButtonStyle,HardcodedText">
+            </Button>
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_me_collection_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="牵手蓝天 你我同行 环保主题摄影比赛征稿"
-            android:textColor="@color/font_black_primary"
-            android:textSize="@dimen/fontSizeLarge" />
-
-
-        <TextView
-            android:id="@+id/tv_me_collection_level"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            android:text="@string/item_home_list_level"
-            android:textSize="@dimen/fontSizeExtraSmall"/>
 
     </LinearLayout>
+
+
 
 </android.support.v7.widget.CardView>

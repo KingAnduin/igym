@@ -7,7 +7,7 @@ import com.example.thinkpad.icompetition.model.entity.collection.CollectionRoot;
 import com.example.thinkpad.icompetition.model.entity.collection.IsCollectionRoot;
 import com.example.thinkpad.icompetition.model.entity.focus.MyFocusRoot;
 import com.example.thinkpad.icompetition.model.entity.search.IsConcernRoot;
-import com.example.thinkpad.icompetition.model.event.CompetitionInfoEvent;
+import com.example.thinkpad.icompetition.model.event.OrderInfoEvent;
 import com.example.thinkpad.icompetition.model.event.FocusEvent;
 import com.example.thinkpad.icompetition.model.impl.CompetitionModel;
 import com.example.thinkpad.icompetition.presenter.i.IBasePresenter;

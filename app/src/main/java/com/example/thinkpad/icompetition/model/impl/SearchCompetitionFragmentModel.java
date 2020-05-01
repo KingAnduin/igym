@@ -47,6 +47,5 @@ public class SearchCompetitionFragmentModel extends BaseFragmentModel<SearchEven
                 postEvent(event);
             }
         };
-        mNetworkInterface.searchInfor(callback,page,page_size,words);
     }
 }

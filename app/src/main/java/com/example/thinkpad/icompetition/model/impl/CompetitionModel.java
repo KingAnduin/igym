@@ -6,7 +6,7 @@ import com.example.thinkpad.icompetition.model.entity.collection.CollectionRoot;
 import com.example.thinkpad.icompetition.model.entity.collection.IsCollectionRoot;
 import com.example.thinkpad.icompetition.model.entity.focus.MyFocusRoot;
 import com.example.thinkpad.icompetition.model.entity.search.IsConcernRoot;
-import com.example.thinkpad.icompetition.model.event.CompetitionInfoEvent;
+import com.example.thinkpad.icompetition.model.event.OrderInfoEvent;
 import com.example.thinkpad.icompetition.model.event.FocusEvent;
 import com.example.thinkpad.icompetition.model.i.IBaseModel;
 import com.example.thinkpad.icompetition.model.i.ICompetitionModel;
@@ -29,80 +29,17 @@ public class CompetitionModel extends BaseModel implements IBaseModel,ICompetiti
 
     @Override
     public void getIsCollection(String com_id) {
-        Callback callback = new CallbackIntercept() {
-            @Override
-            public void onSuccess(Call call, String jsonBody) {
-                Gson gson = new Gson();
-                IsCollectionRoot root = gson.fromJson(jsonBody, IsCollectionRoot.class);
-                if(root != null ){
-                    CompetitionInfoEvent event = new CompetitionInfoEvent();
-                    event.setIsCollectionRoot(root);
-                    event.setWhat(CompetitionInfoEvent.COLLECTION_IS_OK);
-                    postEvent(event);
-                }
-            }
 
-            @Override
-            public void onFail(Call call, Exception e) {
-                CompetitionInfoEvent event = new CompetitionInfoEvent();
-                event.setWhat(CompetitionInfoEvent.COLLECTION_IS_FAIL);
-                postEvent(event);
-            }
-        };
-        mNetworkInterface.getIsCollection(callback, com_id);
     }
 
     @Override
     public void addCollection(String user_num, String com_id) {
-        Callback callback = new CallbackIntercept() {
-            @Override
-            public void onSuccess(Call call, String jsonBody) {
-                Gson gson = new Gson();
-                CollectionRoot root = gson.fromJson(jsonBody, CollectionRoot.class);
-                if(root != null ){
-                    CompetitionInfoEvent event = new CompetitionInfoEvent();
-                    event.setRoot(root);
-                    event.setWhat(CompetitionInfoEvent.COLLECTION_ADD_OK);
-                    postEvent(event);
-                }
-            }
-
-            @Override
-            public void onFail(Call call, Exception e) {
-                CompetitionInfoEvent event = new CompetitionInfoEvent();
-                event.setWhat(CompetitionInfoEvent.COLLECTION_ADD_FAIL);
-                postEvent(event);
-            }
-        };
-
-        mNetworkInterface.addCollection(callback, user_num, com_id);
 
     }
 
     @Override
     public void cancelCollection(String com_id) {
-        Callback callback = new CallbackIntercept() {
-            @Override
-            public void onSuccess(Call call, String jsonBody) {
-                Gson gson = new Gson();
-                CollectionRoot root = gson.fromJson(jsonBody, CollectionRoot.class);
-                if(root != null ){
-                    CompetitionInfoEvent event = new CompetitionInfoEvent();
-                    event.setRoot(root);
-                    event.setWhat(CompetitionInfoEvent.COLLECTION_CANCEL_OK);
-                    postEvent(event);
-                }
-            }
 
-            @Override
-            public void onFail(Call call, Exception e) {
-                CompetitionInfoEvent event = new CompetitionInfoEvent();
-                event.setWhat(CompetitionInfoEvent.COLLECTION_CANCEL_FAIL);
-                postEvent(event);
-            }
-        };
-
-        mNetworkInterface.cancleCollection(callback, com_id);
     }
 
     @Override
@@ -127,7 +64,7 @@ public class CompetitionModel extends BaseModel implements IBaseModel,ICompetiti
                 postEvent(event);
             }
         };
-        mNetworkInterface.getIsConcern(callback, other_num);
+
     }
 
     @Override
@@ -153,7 +90,7 @@ public class CompetitionModel extends BaseModel implements IBaseModel,ICompetiti
             }
         };
 
-        mNetworkInterface.addConcern(callback, other_num);
+
     }
 
     @Override
@@ -179,6 +116,6 @@ public class CompetitionModel extends BaseModel implements IBaseModel,ICompetiti
             }
         };
 
-        mNetworkInterface.deleteConcern(callback, other_num);
+
     }
 }

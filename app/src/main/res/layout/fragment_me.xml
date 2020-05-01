@@ -175,7 +175,7 @@
                             android:layout_gravity="center_vertical"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="我的收藏"/>
+                            android:text="@string/order"/>
                         <ImageView
                             android:layout_weight="1"
                             android:layout_margin="5dp"

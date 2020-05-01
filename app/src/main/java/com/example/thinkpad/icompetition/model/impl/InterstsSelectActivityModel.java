@@ -47,7 +47,7 @@ public class InterstsSelectActivityModel extends BaseModel implements IInterstsS
                 postEvent(event);
             }
         };
-        mNetworkInterface.userInterests(callback,page,pageSize);
+
     }
 
     @Override
@@ -75,8 +75,7 @@ public class InterstsSelectActivityModel extends BaseModel implements IInterstsS
                 postEvent(event);
             }
         };
-        mNetworkInterface.addInterest(callback,typename);
-    }
+      }
 
     @Override
     public void deleteInterest(String typename) {
@@ -103,7 +102,6 @@ public class InterstsSelectActivityModel extends BaseModel implements IInterstsS
                 postEvent(event);
             }
         };
-        mNetworkInterface.deleteInterest(callback,typename);
     }
 
     @Override
@@ -131,6 +129,5 @@ public class InterstsSelectActivityModel extends BaseModel implements IInterstsS
                 postEvent(event);
             }
         };
-        mNetworkInterface.interestsType(callback);
-    }
+       }
 }

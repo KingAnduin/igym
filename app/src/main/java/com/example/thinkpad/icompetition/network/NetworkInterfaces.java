@@ -48,8 +48,6 @@ public class NetworkInterfaces {
      */
     public void userRegister(Callback callback, String name, String pwd){
         ArrayMap<String, String> param = new ArrayMap<>();
-        //param.put("user_num", name);
-        //param.put("user_pwd", pwd);
         // TODO 测试
         String SERVER_HOST = "http://175.24.34.223:80";
         String REGISTER = "/api/user/register/";
@@ -69,8 +67,6 @@ public class NetworkInterfaces {
      */
     public void userLogIn(Callback callback, String user_num, String user_pwd){
         ArrayMap<String, String> param = new ArrayMap<>();
-        //param.put("user_num", user_num);
-        //param.put("user_pwd", user_pwd);
         // TODO 测试
         String SERVER_HOST = "http://175.24.34.223:80";
         String LOG_IN = "/api/user/login/";
@@ -86,8 +82,6 @@ public class NetworkInterfaces {
      */
     public void changePassword(Callback callback,String oldPassword,String newPassword ){
         ArrayMap<String, String> param = new ArrayMap<>();
-        //param.put("user_pwd", oldPassword);
-        //param.put("new_pwd",newPassword);
         // TODO 测试
         String SERVER_HOST = "http://175.24.34.223:80";
         String CHANGE_PASSWORD = "/api/user/changePassword/";
@@ -105,7 +99,6 @@ public class NetworkInterfaces {
         // TODO 测试
         String SERVER_HOST = "http://175.24.34.223:80";
         String USER_INFOR = "/api/user/userInfo/";
-        //param.put("user_num", num);
         new NetworkRequest(param, SERVER_HOST + USER_INFOR, callback).sendRequestByMethod("GET");
     }
 
@@ -120,10 +113,6 @@ public class NetworkInterfaces {
      */
     public void submitUserInfor(Callback callback,String user_account,String userName,String userSex,String userBirthday,String headImage){
         ArrayMap<String,String> param = new ArrayMap<>();
-        //param.put("user_name",userName);
-        //param.put("user_sex",userSex);
-        //param.put("user_birthday",userBirthday);
-        //param.put("user_headimage",headImage);
         // TODO 测试
         String SERVER_HOST = "http://175.24.34.223:80";
         String USER_INFOR = "/api/user/userInfo/";
@@ -138,20 +127,84 @@ public class NetworkInterfaces {
 
 
     /**
-     * 分页查询竞赛信息
+     * 分页查询健身资讯信息
      * @param callback .
      * @param page_no 页码
      * @param page_size 每页数量
      */
-    public void getItemExam(Callback callback, int page_no, int page_size){
+    public void getItemNews(Callback callback, int page_no, int page_size){
         ArrayMap<String, String> param = new ArrayMap<>();
-        //param.put("page", String.valueOf(page_no));
-        //param.put("pageSize", String.valueOf(page_size));
         // TODO 测试
         String SERVER_HOST = "http://175.24.34.223:80";
         String PAGING_QUERY_EXAM = "/api/news/newsInfo/?page=" + page_no;
         new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_EXAM, callback).sendRequestByMethod("GET");
     }
+
+    /**
+     * 分页查询订单
+     * @param callback .
+     */
+    public void queryByPageOrder(Callback callback, int page_no){
+        ArrayMap<String, String > param = new ArrayMap<>();
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String PAGING_QUERY_USER_ORDER = "/api/order/orderInfo/?page=" + page_no;
+        new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_USER_ORDER, callback).sendRequestByMethod("GET");
+    }
+
+    /**
+     * 删除订单
+     * @param callback .
+     * @param order_id 订单ID
+     */
+    public void deleteOrder(Callback callback, int order_id){
+        ArrayMap<String, String > param = new ArrayMap<>();
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String DELETE_ORDER = "/api/order/orderInfo/";
+        param.put("order_id", String.valueOf(order_id));
+        new NetworkRequest(param, SERVER_HOST + DELETE_ORDER, callback).sendRequestByMethod("DELETE");
+    }
+
+    /**
+     * 新增评论
+     * @param callback .
+     * @param order 订单ID
+     * @param comment 评论内容
+     */
+    public void addComment(Callback callback, int order, String comment){
+        ArrayMap<String, String > param = new ArrayMap<>();
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String ADD_COMMENT = "/api/comments/CommentsInfo/";
+        param.put("order", String.valueOf(order));
+        param.put("comment_content", comment);
+        new NetworkRequest(param, SERVER_HOST + ADD_COMMENT, callback).sendRequestByMethod("POST");
+    }
+
+    /**
+     * 新增订单
+     * @param callback .
+     * @param order_data 预约日期
+     * @param order_time_period 预约时间段
+     * @param order_status 状态默认为未完成
+     * @param user_account 用户ID
+     * @param good_id 商品ID
+     */
+    public void addOrder(Callback callback, String order_data, String order_time_period, String order_status, String user_account, String good_id){
+        ArrayMap<String, String > param = new ArrayMap<>();
+        // TODO 测试
+        String SERVER_HOST = "http://175.24.34.223:80";
+        String ADD_ORDER = "/api/order/orderInfo/";
+        param.put("order_data", order_data);
+        param.put("order_time_period", order_time_period);
+        param.put("order_status", order_status);
+        param.put("user_account", user_account);
+        param.put("good_id", good_id);
+        new NetworkRequest(param, SERVER_HOST + ADD_ORDER, callback).sendRequestByMethod("PUT");
+    }
+
+
 
     /**
      * 分页查询热门竞赛信息
@@ -167,21 +220,6 @@ public class NetworkInterfaces {
 
     }
 
-
-    /**
-     *
-     * @param callback .
-     * @param page 请求页号
-     * @param page_size 每页请求的数据条数
-     * @param words 关键字
-     */
-    public void searchInfor(Callback callback,int page,int page_size,String words){
-        ArrayMap<String,String> param = new ArrayMap<>();
-        param.put("page",String.valueOf(page));
-        param.put("pageSize",String.valueOf(page_size));
-        param.put("words",words);
-        new NetworkRequest(param,SERVER_HOST + SEARCH_INFOR ,callback).sendRequest();
-    }
     /**
      * 分页查询兴趣的竞赛信息
      * @param callback .
@@ -195,148 +233,6 @@ public class NetworkInterfaces {
         param.put("pageSize", String.valueOf(page_size));
         param.put("type", type);
         new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_INTEREST, callback).sendRequest();
-    }
-
-    /**
-     * 删除收藏
-     * @param callback .
-     * @param comid 比赛id
-     */
-    public void cancleCollection(Callback callback, String comid){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("comid", comid);
-        new NetworkRequest(param, SERVER_HOST + COLLECTION_CANCLE, callback).sendRequest();
-    }
-
-    /**
-     * 添加收藏
-     * @param callback .
-     * @param usernum 用户账号
-     * @param comid 比赛id
-     */
-    public void addCollection(Callback callback, String usernum, String comid){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("usernum", usernum);
-        param.put("comid", comid);
-        new NetworkRequest(param, SERVER_HOST + COLLECTION_ADD, callback).sendRequest();
-    }
-
-    /**
-     * 获取是否收藏（单个）
-     * @param callback .
-     * @param comid 比赛id
-     */
-    public void getIsCollection(Callback callback,String comid){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("comid", comid);
-        new NetworkRequest(param, SERVER_HOST + COLLECTION_BY_ID, callback).sendRequest();
-    }
-
-    /**
-     * 获取搜索到的其他用户是否被关注
-     * @param callback .
-     * @param other_num 其他用户的id
-     */
-    public void getIsConcern(Callback callback,String other_num){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("other_num", other_num);
-        new NetworkRequest(param, SERVER_HOST + GET_ISCONCERN, callback).sendRequest();
-    }
-
-    /**
-     * 添加关注
-     * @param callback .
-     * @param other_num 其他用户的id
-     */
-    public void addConcern(Callback callback,String other_num){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("star", other_num);
-        new NetworkRequest(param, SERVER_HOST + ADD_CONCERN, callback).sendRequest();
-    }
-
-    /**
-     * 删除关注
-     * @param callback .
-     * @param other_num 其他用户的id
-     */
-    public void deleteConcern(Callback callback,String other_num){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("star", other_num);
-        new NetworkRequest(param, SERVER_HOST + DELETE_CONCERN, callback).sendRequest();
-    }
-
-    /**
-     * 分页查询收藏
-     * @param callback .
-     * @param page_no 页号
-     * @param page_size 页面大小
-     */
-    public void queryByPageCollection(Callback callback,String userNum, int page_no, int page_size){
-        ArrayMap<String, String > param = new ArrayMap<>();
-        param.put("page", String.valueOf(page_no));
-        param.put("pageSize", String.valueOf(page_size));
-        param.put("usernum", userNum);
-        new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_COLLECTION, callback).sendRequest();
-    }
-
-    /**
-     * 获取兴趣类别
-     * @param callback .
-     */
-    public void interestsType(Callback callback){
-        ArrayMap<String, String > param = new ArrayMap<>();
-        new NetworkRequest(param, SERVER_HOST + INTERESTS_TYPE, callback).sendRequest();
-    }
-
-    /**
-     * 添加兴趣
-     * @param callback .
-     * @param typename 添加兴趣的类名
-     */
-    public void addInterest(Callback callback,String typename){
-        ArrayMap<String, String > param = new ArrayMap<>();
-        param.put("typename", typename);
-        new NetworkRequest(param, SERVER_HOST + INTERESTS_ADD, callback).sendRequest();
-    }
-
-    /**
-     * 删除兴趣
-     * @param callback .
-     * @param typename 删除兴趣的类名
-     */
-    public void deleteInterest(Callback callback,String typename){
-        ArrayMap<String, String > param = new ArrayMap<>();
-        param.put("typename", String.valueOf(typename));
-        new NetworkRequest(param, SERVER_HOST + INTERESTS_DELETE, callback).sendRequest();
-    }
-
-    /**
-     * 获取用户兴趣
-     * @param callback .
-     * @param page_no 请求页数
-     * @param page_size 每页条数
-     */
-    public void userInterests(Callback callback, int page_no, int page_size){
-        ArrayMap<String, String > param = new ArrayMap<>();
-        param.put("page", String.valueOf(page_no));
-        param.put("pageSize", String.valueOf(page_size));
-        new NetworkRequest(param, SERVER_HOST + INTERESTS_USER, callback).sendRequest();
-    }
-
-
-    /**
-     * 分页获取用户关注
-     * @param callback .
-     * @param page_no 页码
-     * @param page_size 页面大小
-     * @param userNum 用户账号
-     */
-    public void queryByPageFocus(Callback callback, int page_no, int page_size, String userNum){
-        ArrayMap<String, String> param = new ArrayMap<>();
-        param.put("page", String.valueOf(page_no));
-        param.put("pageSize", String.valueOf(page_size));
-        param.put("master", userNum);
-        new NetworkRequest(param, SERVER_HOST + PAGING_QUERY_FOCUS, callback).sendRequest();
     }
 
 }

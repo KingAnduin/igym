@@ -94,6 +94,6 @@
     <string name="action_fail">操作失败</string>
     <string name="my_focus_title">我的关注</string>
 
-    <!--收藏-->
-    <string name="collection">我的收藏</string>
+    <!--订单-->
+    <string name="order">我的订单</string>
 </resources>

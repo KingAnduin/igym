@@ -17,7 +17,7 @@ import com.example.thinkpad.icompetition.R;
 import com.example.thinkpad.icompetition.model.entity.user.UserInforBean;
 import com.example.thinkpad.icompetition.util.ShowReturnLoginUtil;
 import com.example.thinkpad.icompetition.view.activity.impl.InterstsSelectActivity;
-import com.example.thinkpad.icompetition.view.activity.impl.MyCollectionActivity;
+import com.example.thinkpad.icompetition.view.activity.impl.MyOrderActivity;
 import com.example.thinkpad.icompetition.view.activity.impl.MyFocusActivity;
 import com.example.thinkpad.icompetition.view.activity.impl.UserInforActivity;
 import com.example.thinkpad.icompetition.view.activity.impl.UserSetActivity;
@@ -162,7 +162,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.ll_me_collection:
                 if(!TextUtils.isEmpty(((IcompetitionApplication)getActivity().getApplication()).getToken())){
-                    startActivity(new Intent(getActivity(), MyCollectionActivity.class));
+                    startActivity(new Intent(getActivity(), MyOrderActivity.class));
                 }else {
                     showReturnLoginUtil.show();//因为没有登陆所以回到登陆界面
                 }

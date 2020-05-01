@@ -47,7 +47,7 @@ public class HomeRecommendFragmentModel
                 postEvent(event);
             }
         };
-        mNetworkInterface.getItemExam(callback, page_no, page_size);
+        mNetworkInterface.getItemNews(callback, page_no, page_size);
     }
 
 

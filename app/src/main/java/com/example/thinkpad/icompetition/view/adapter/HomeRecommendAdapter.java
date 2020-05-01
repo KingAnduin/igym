@@ -125,7 +125,7 @@ public class HomeRecommendAdapter
         private TextView mLevelTv;              //等级
         private TextView mEquipmentTv;          //器械要求
 
-        public BodyViewHolder(View itemView) {
+        BodyViewHolder(View itemView) {
             super(itemView);
             mItemCv = itemView.findViewById(R.id.cv_item_home_news);
             mPhotoIv = itemView.findViewById(R.id.iv_item_home_news_photo);
@@ -140,7 +140,7 @@ public class HomeRecommendAdapter
         }
 
         //填写数据
-        public void setDate(int position){
+        void setDate(int position){
             NewsItem itemBean = mNewsInfo.get(position);
 
             //加载图片
