@@ -1,1 +1,1 @@
-# icompetition 一款大学生竞赛信息推荐APP
+# icompetition 一款体育馆器材管理APP
